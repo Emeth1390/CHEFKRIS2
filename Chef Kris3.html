@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chef Kris — Garlic Butter Shrimp Pasta</title>
+<meta name="theme-color" content="#F2E8D5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F2E8D5;
+    --parchment-deep:#E8DBC0;
+    --espresso:#2B2118;
+    --tomato:#C1121F;
+    --basil:#48592A;
+    --basil-deep:#33401D;
+    --saffron:#D4A017;
+    --card:#FFFDF6;
+    --line:rgba(43,33,24,0.14);
+    --shadow: 0 10px 30px rgba(43,33,24,0.10);
+    --radius: 14px;
+    --maxw: 1080px;
+  }
+
+  :root{ padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  html{ scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px); }
+  *{box-sizing:border-box;}
+  :root{ padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  html{ scroll-padding-top:calc(70px + env(safe-area-inset-top,0px)); }
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--espresso);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(rgba(43,33,24,0.035) 1px, transparent 1px);
+    background-size:3px 3px;
+    pointer-events:none;
+    z-index:0;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0 0 0.4em;
+    color:var(--basil-deep);
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'JetBrains Mono', monospace; }
+  a{color:inherit;}
+  img,svg{display:block; max-width:100%;}
+  section{position:relative; z-index:1;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    color:var(--tomato);
+    font-weight:600;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:50;
+    background:rgba(242,232,213,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    transition:padding 0.25s ease, box-shadow 0.25s ease;
+  }
+  nav.scrolled{ box-shadow:0 6px 18px rgba(43,33,24,0.08); }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    transition:padding 0.25s ease;
+  }
+  nav.scrolled .nav-inner{ padding:11px 24px; }
+  @keyframes brandPulse{
+    0%, 100%{ transform:scale(1); }
+    50%{ transform:scale(1.05); }
+  }
+  @keyframes potWiggle{
+    0%, 100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-8deg); }
+    75%{ transform:rotate(8deg); }
+  }
+  @keyframes gradientShift{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.4rem;
+    color:var(--espresso); text-decoration:none;
+    background:linear-gradient(135deg, var(--tomato) 0%, #D42A32 50%, var(--saffron) 100%);
+    background-size:200% 200%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    position:relative;
+    transition:transform 0.2s ease;
+    animation:gradientShift 3s ease infinite;
+  }
+  .brand:hover{
+    transform:translateY(-2px);
+    animation:brandPulse 0.6s ease infinite;
+  }
+  .brand .pot{
+    width:34px; height:34px; flex:none;
+    filter:drop-shadow(0 2px 4px rgba(193,18,31,0.3));
+    transition:transform 0.3s ease;
+    animation:potWiggle 2s ease-in-out infinite;
+  }
+  .brand:hover .pot{
+    transform:rotate(-5deg) scale(1.1);
+    animation:potWiggle 0.4s ease-in-out infinite;
+  }
+  .nav-links{
+    display:flex; gap:2rem; list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{
+    text-decoration:none; font-weight:600; font-size:0.92rem;
+    color:var(--basil-deep);
+    position:relative; padding:4px 0;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:-2px;
+    width:0; height:2px; background:var(--tomato);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    background:linear-gradient(180deg, #D42A32 0%, var(--tomato) 100%);
+    color:#fff !important; padding:10px 20px !important;
+    border-radius:999px; font-size:0.85rem !important;
+    position:relative; display:inline-block;
+    box-shadow:
+      0 4px 0 #7A0C12,
+      0 8px 14px rgba(120,12,18,0.35);
+    transform:translateY(0);
+    transition:transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .nav-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:
+      0 6px 0 #7A0C12,
+      0 12px 18px rgba(120,12,18,0.4);
+  }
+  .nav-cta:active{
+    transform:translateY(4px);
+    box-shadow:
+      0 0px 0 #7A0C12,
+      0 2px 6px rgba(120,12,18,0.35);
+  }
+  .nav-cta::after{ display:none; }
+  .burger{
+    display:none; flex-direction:column; gap:5px; background:none; border:none;
+    cursor:pointer; padding:8px; z-index:60;
+  }
+  .burger span{
+    width:24px; height:2px; background:var(--espresso); border-radius:2px;
+    transition:transform 0.3s ease, opacity 0.3s ease;
+  }
+  .burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2){ opacity:0; }
+  .burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    max-width:var(--maxw); margin:0 auto; padding:48px 24px 20px;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;
+  }
+  .hero-text .eyebrow{ margin-bottom:14px; display:block; }
+  .hero-text h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.04;
+  }
+  .hero-text h1 em{ color:var(--tomato); font-style:italic; }
+  .hero-text p{ max-width:46ch; color:rgba(43,33,24,0.78); font-size:1.05rem; }
+  .badges{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;
+  }
+  .badge{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:10px 14px; font-family:'JetBrains Mono', monospace; font-size:0.78rem;
+    display:flex; flex-direction:column; gap:2px; box-shadow:var(--shadow);
+  }
+  .badge b{ font-size:1rem; color:var(--basil-deep); font-family:'Fraunces', serif; }
+
+  .hero-art{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-art svg{ width:100%; height:auto; max-width:420px; }
+
+  .steam path{
+    stroke-dasharray:40;
+    stroke-dashoffset:40;
+    animation:rise 3.2s ease-in-out infinite;
+    opacity:0;
+  }
+  .steam path:nth-child(2){ animation-delay:0.6s; }
+  .steam path:nth-child(3){ animation-delay:1.2s; }
+  @keyframes rise{
+    0%{ stroke-dashoffset:40; opacity:0; transform:translateY(0); }
+    15%{ opacity:0.55; }
+    70%{ opacity:0.25; }
+    100%{ stroke-dashoffset:0; opacity:0; transform:translateY(-14px); }
+  }
+  .skillet-shake{
+    transform-origin:50% 78%;
+    animation:sizzle 2.6s ease-in-out infinite;
+  }
+  @keyframes sizzle{
+    0%,100%{ transform:rotate(0deg); }
+    50%{ transform:rotate(0.6deg); }
+  }
+
+  /* ---------- RECIPE MENU ---------- */
+  #menu{ padding:clamp(28px,5vw,44px) 0 16px; }
+  .menu-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px; }
+  .menu-card{
+    display:flex; flex-direction:column; gap:6px;
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; text-decoration:none; color:var(--espresso);
+    box-shadow:var(--shadow); transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .menu-card:hover{ transform:translateY(-4px); box-shadow:0 16px 34px rgba(43,33,24,0.14); }
+  .menu-tag{ font-size:0.72rem; color:var(--basil); text-transform:uppercase; letter-spacing:0.1em; }
+  .menu-card h3{ margin:2px 0 2px; font-size:1.3rem; }
+  .menu-card p{ margin:0; color:rgba(43,33,24,0.72); font-size:0.92rem; }
+  .menu-go{ margin-top:10px; font-weight:600; color:var(--tomato); font-size:0.88rem; }
+
+  /* ---------- CAKE HERO ---------- */
+  .cake-hero{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;
+    padding-top:clamp(36px,7vw,70px);
+  }
+  .cake-hero-text h2{ font-size:clamp(2.1rem, 4.2vw, 2.9rem); line-height:1.06; }
+  .cake-hero-text h2 em{ color:var(--tomato); font-style:italic; }
+  .cake-hero-text p{ max-width:46ch; color:rgba(43,33,24,0.78); font-size:1.02rem; }
+  .frosting-drip{ animation:drip 3s ease-in-out infinite; }
+  @keyframes drip{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(3px); }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{ max-width:640px; margin:0 auto 36px; text-align:center; }
+  .section-head .eyebrow{ display:block; margin-bottom:10px; }
+
+  /* ---------- INGREDIENTS ---------- */
+  #pasta-steps, #cake-steps, #salmon-steps, #champorado-steps, #cheesecake-steps, #sinigang-steps, #spicyshrimp-steps{ padding:clamp(40px,7vw,70px) 0 clamp(50px,8vw,90px); background:rgba(43,33,24,0.05); }
+  .divider{
+    display:flex; align-items:center; gap:14px; max-width:var(--maxw); margin:0 auto; padding:0 24px 30px;
+    color:var(--basil); opacity:0.6;
+  }
+  .divider::before,.divider::after{ content:""; flex:1; height:1px; background:var(--line); }
+
+  .ing-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px 28px;
+  }
+  .ing{
+    display:flex; align-items:center; gap:14px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; cursor:pointer; user-select:none;
+    box-shadow:var(--shadow);
+    transition:transform 0.18s ease, background 0.18s ease;
+  }
+  .ing:hover{ transform:translateX(4px); }
+  .ing.checked{ background:var(--parchment-deep); }
+  .ing.checked .ing-name{ text-decoration:line-through; opacity:0.55; }
+  .check{
+    width:22px; height:22px; border-radius:6px; border:2px solid var(--basil);
+    flex:none; display:flex; align-items:center; justify-content:center;
+    transition:background 0.18s ease, border-color 0.18s ease;
+  }
+  .ing.checked .check{ background:var(--basil); }
+  .check svg{ width:13px; height:13px; opacity:0; transition:opacity 0.15s ease; }
+  .ing.checked .check svg{ opacity:1; }
+  .ing-name{ font-weight:600; flex:1; min-width:0; overflow-wrap:break-word; }
+  .ing-amt{ font-family:'JetBrains Mono', monospace; font-size:0.82rem; color:var(--tomato); white-space:nowrap; }
+
+  /* ---------- STEPS ---------- */
+  #pasta{ padding:clamp(40px,7vw,70px) 0; }
+  .steps-list{ position:relative; max-width:760px; margin:0 auto; }
+  .steps-list::before{
+    content:""; position:absolute; left:27px; top:8px; bottom:8px; width:2px;
+    background:repeating-linear-gradient(to bottom, var(--basil) 0 6px, transparent 6px 12px);
+    opacity:0.5;
+  }
+  .step{
+    display:grid; grid-template-columns:56px 1fr; gap:22px;
+    padding:26px 0; position:relative;
+    opacity:0; transform:translateY(24px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .step.in-view{ opacity:1; transform:translateY(0); }
+  .step-num{
+    width:56px; height:56px; border-radius:50%; background:var(--card);
+    border:2px solid var(--basil); color:var(--basil-deep);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.3rem;
+    z-index:2; box-shadow:var(--shadow);
+    transition:background 0.3s ease, color 0.3s ease;
+  }
+  .step.in-view .step-num{ background:var(--tomato); border-color:var(--tomato); color:#fff; }
+  .step-body{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; box-shadow:var(--shadow);
+    display:grid; grid-template-columns:1fr 92px; gap:16px; align-items:center;
+  }
+  .step-body h3{ font-size:1.12rem; margin-bottom:6px; }
+  .step-body p{ margin:0; color:rgba(43,33,24,0.78); font-size:0.95rem; }
+  .step-time{
+    font-family:'JetBrains Mono', monospace; font-size:0.72rem; color:var(--tomato);
+    display:block; margin-top:8px;
+  }
+  .step-icon{
+    width:92px; height:92px; border-radius:10px; background:var(--parchment);
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .step-icon svg{ width:52px; height:52px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:44px 24px 50px; text-align:center; color:rgba(43,33,24,0.6);
+    font-size:0.85rem;
+  }
+  footer .brand{ justify-content:center; margin-bottom:10px; }
+
+  .donation-box{
+    margin-top:32px; padding-top:32px;
+    border-top:2px solid var(--line);
+    max-width:640px; margin-left:auto; margin-right:auto;
+  }
+  .donation-details, .contact-details{
+    display:flex; justify-content:center; gap:16px; flex-wrap:wrap;
+  }
+  .donation-card, .contact-card{
+    background:var(--card); border:2px solid var(--tomato); border-radius:14px;
+    padding:20px 28px; text-align:center;
+    box-shadow:0 8px 24px rgba(193,18,31,0.15);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    animation:donationPulse 3s ease-in-out infinite;
+    min-width:200px;
+  }
+  .contact-card{
+    border-color:var(--basil);
+    box-shadow:0 8px 24px rgba(72,89,42,0.15);
+    animation:contactPulse 3s ease-in-out infinite;
+    animation-delay:1s;
+  }
+  .donation-card:hover, .contact-card:hover{
+    transform:translateY(-4px);
+  }
+  .donation-card:hover{
+    box-shadow:0 12px 32px rgba(193,18,31,0.25);
+  }
+  .contact-card:hover{
+    box-shadow:0 12px 32px rgba(72,89,42,0.25);
+  }
+  @keyframes donationPulse{
+    0%, 100%{ box-shadow:0 8px 24px rgba(193,18,31,0.15); }
+    50%{ box-shadow:0 8px 24px rgba(193,18,31,0.30); }
+  }
+  @keyframes contactPulse{
+    0%, 100%{ box-shadow:0 8px 24px rgba(72,89,42,0.15); }
+    50%{ box-shadow:0 8px 24px rgba(72,89,42,0.30); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .donation-card, .contact-card{ animation:none; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1024px){
+    .wrap{ padding:0 20px; }
+    .nav-inner{ padding-left:20px; padding-right:20px; }
+    .hero{ gap:32px; padding-left:20px; padding-right:20px; }
+    .cake-hero{ gap:32px; }
+    .menu-grid{ gap:16px; }
+  }
+
+  @media (max-width: 860px){
+    .hero{ grid-template-columns:1fr; text-align:center; padding-top:32px; }
+    .hero-text p{ margin-left:auto; margin-right:auto; }
+    .badges{ justify-content:center; }
+    .hero-art{ order:-1; max-width:280px; margin:0 auto; }
+    .hero-art svg{ max-width:280px; }
+    .cake-hero{ grid-template-columns:1fr; text-align:center; padding-top:40px; }
+    .cake-hero-text p{ margin-left:auto; margin-right:auto; }
+    .cake-hero .hero-art{ order:-1; max-width:260px; margin:0 auto; }
+  }
+
+  @media (max-width: 720px){
+    .menu-grid{ grid-template-columns:1fr; }
+    .nav-links{
+      position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
+      background:var(--card); flex-direction:column; padding:100px 32px 40px;
+      gap:1.7rem; box-shadow:-8px 0 30px rgba(43,33,24,0.15);
+      transform:translateX(100%); transition:transform 0.35s ease;
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .nav-cta{ align-self:flex-start; }
+    .burger{ display:flex; }
+    .ing-grid{ grid-template-columns:1fr; }
+    .step-body{ grid-template-columns:1fr; }
+    .step-icon{ width:100%; height:100px; order:-1; }
+  }
+
+  @media (max-width: 480px){
+    .wrap, .hero, .nav-inner{ padding-left:16px; padding-right:16px; }
+    .brand{ font-size:1.05rem; gap:8px; }
+    .hero-text h1{ font-size:2.1rem; }
+    .cake-hero-text h2{ font-size:1.85rem; }
+    .badges{ gap:8px; }
+    .badge{ padding:8px 10px; font-size:0.7rem; }
+    .ing{ padding:12px 12px; gap:10px; }
+    .ing-name{ font-size:0.92rem; }
+    .ing-amt{ font-size:0.72rem; }
+    .step{ grid-template-columns:44px 1fr; gap:14px; }
+    .step-num{ width:44px; height:44px; font-size:1.05rem; }
+    .step-body{ padding:16px 16px; }
+    .menu-card{ padding:18px 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+  }
+
+  :focus-visible{ outline:3px solid var(--saffron); outline-offset:2px; }
+  /* ================= IMMERSIVE LAYER ================= */
+  :root{ --tint:#E9B949; }
+  body{ background:color-mix(in srgb, var(--tint) 16%, var(--parchment)); transition:background .9s ease; }
+
+  #progress{ position:fixed; top:0; left:0; right:0; height:4px; z-index:80; pointer-events:none; }
+  #progress i{ display:block; height:100%; background:linear-gradient(90deg,var(--saffron),var(--tomato)); transform-origin:0 50%; transform:scaleX(var(--p,0)); }
+
+  #ambient{ position:fixed; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  #ambient span{
+    position:absolute; bottom:-30px; width:var(--s); height:var(--s); border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--tint) 65%, #fff) 0%, transparent 70%);
+    opacity:0; animation:floatUp var(--t) linear var(--dl) infinite;
+  }
+  @keyframes floatUp{
+    0%{ transform:translate3d(0,0,0) scale(.6); opacity:0; }
+    10%{ opacity:.6; }
+    90%{ opacity:.25; }
+    100%{ transform:translate3d(var(--dx),-110vh,0) scale(1.15); opacity:0; }
+  }
+
+  #glow{
+    position:fixed; left:0; top:0; width:440px; height:440px; margin:-220px 0 0 -220px; border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--tint) 55%, transparent) 0%, transparent 65%);
+    pointer-events:none; z-index:2; opacity:0; transition:opacity .4s; mix-blend-mode:multiply; will-change:transform;
+  }
+
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(28px); } to{ opacity:1; transform:none; } }
+  @keyframes popIn{ from{ opacity:0; transform:scale(.7) rotate(-6deg); } to{ opacity:1; transform:none; } }
+  .hero-text > *{ animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) backwards; }
+  .hero-text > *:nth-child(2){ animation-delay:.1s; }
+  .hero-text > *:nth-child(3){ animation-delay:.2s; }
+  .hero-text > *:nth-child(4){ animation-delay:.3s; }
+  .hero .hero-art svg{ animation:popIn 1s cubic-bezier(.2,.9,.3,1.2) .15s backwards; }
+
+  .reveal{ opacity:0; }
+  .reveal.in{ opacity:1; animation:fadeUp .8s cubic-bezier(.2,.7,.2,1) backwards; animation-delay:var(--d,0s); }
+
+  .hero-art{ perspective:900px; }
+  .hero-art svg{
+    transform:translate3d(0,var(--py,0px),0) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+    transition:transform .18s ease-out;
+  }
+
+  .step.in-view{ opacity:.5; }
+  .step.in-view.active{ opacity:1; }
+  .step.active .step-body{ box-shadow:0 18px 40px rgba(43,33,24,.18), 0 0 0 2px color-mix(in srgb, var(--tomato) 55%, transparent); }
+  .step.active .step-icon svg{ animation:bob 2.2s ease-in-out infinite; }
+  @keyframes bob{ 50%{ transform:translateY(-4px) rotate(-3deg); } }
+  .step-body{ transition:transform .12s ease-out, box-shadow .3s ease; }
+  .menu-card{ transition:transform .12s ease-out, box-shadow .2s ease; }
+  .steps-list::after{
+    content:""; position:absolute; left:27px; top:8px; width:2px; height:var(--fill,0px);
+    background:linear-gradient(var(--saffron),var(--tomato)); box-shadow:0 0 10px var(--tomato);
+    border-radius:2px; transition:height .15s linear; z-index:1;
+  }
+
+  .cook-btn{
+    display:inline-flex; align-items:center; gap:8px; margin-top:14px; border:0; cursor:pointer;
+    font:inherit; font-weight:700; font-size:.92rem; color:#fff; padding:12px 24px; border-radius:999px;
+    background:linear-gradient(180deg,#D42A32,var(--tomato));
+    box-shadow:0 4px 0 #7A0C12, 0 8px 14px rgba(120,12,18,.35);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .cook-btn:hover{ transform:translateY(-2px); box-shadow:0 6px 0 #7A0C12, 0 12px 18px rgba(120,12,18,.4); }
+  .cook-btn:active{ transform:translateY(4px); box-shadow:0 0 0 #7A0C12, 0 2px 6px rgba(120,12,18,.35); }
+  .cook-btn.ghost{ background:rgba(251,243,224,.12); color:#FBF3E0; box-shadow:0 4px 0 rgba(0,0,0,.4); }
+  .cook-btn:disabled{ cursor:default; }
+
+  .cook{
+    position:fixed; inset:0; z-index:200; display:flex; flex-direction:column; color:#FBF3E0;
+    background:radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--tint) 38%, #2B2118) 0%, #1A130D 72%);
+    padding:calc(env(safe-area-inset-top,0px) + 14px) 20px calc(env(safe-area-inset-bottom,0px) + 18px);
+    opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease;
+  }
+  .cook.open{ opacity:1; visibility:visible; }
+  .cook-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:680px; width:100%; margin:0 auto; }
+  .cook-title{ font-family:'Fraunces',serif; font-size:1.02rem; opacity:.85; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .cook-x{ flex:none; width:44px; height:44px; border-radius:50%; border:1.5px solid rgba(251,243,224,.35); background:transparent; color:inherit; font-size:1.2rem; cursor:pointer; }
+  .cook-dots{ display:flex; gap:6px; justify-content:center; margin:14px auto 0; max-width:680px; width:100%; }
+  .cook-dots i{ height:5px; flex:1; border-radius:3px; background:rgba(251,243,224,.2); transition:background .3s; }
+  .cook-dots i.done{ background:var(--saffron); }
+  .cook-dots i.now{ background:var(--tomato); }
+  .cook-stage{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; max-width:680px; width:100%; margin:0 auto; gap:14px; padding:12px 0; overflow:auto; }
+  .cook-stage.swap > *{ animation:fadeUp .5s cubic-bezier(.2,.7,.2,1) backwards; }
+  .cook-ic{ width:clamp(96px,26vw,150px); height:clamp(96px,26vw,150px); border-radius:50%; background:rgba(251,243,224,.08); border:2px solid rgba(251,243,224,.18); display:flex; align-items:center; justify-content:center; }
+  .cook-ic svg{ width:60%; height:60%; stroke:var(--saffron); }
+  .cook-num{ font-family:'JetBrains Mono',monospace; letter-spacing:.14em; font-size:.78rem; color:var(--saffron); text-transform:uppercase; }
+  .cook-h{ font-family:'Fraunces',serif; font-size:clamp(1.7rem,6vw,2.7rem); line-height:1.1; color:#FFFDF6; margin:0; }
+  .cook-p{ font-size:clamp(1.05rem,3.6vw,1.3rem); line-height:1.5; max-width:34ch; margin:0; color:rgba(251,243,224,.88); }
+  .cook-timer{ margin-top:6px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center; }
+  .cook-time{ font-size:clamp(2rem,9vw,3rem); font-weight:600; color:#fff; min-width:5ch; }
+  .cook-time.done{ color:var(--saffron); animation:pulse 1s ease-in-out infinite; }
+  @keyframes pulse{ 50%{ transform:scale(1.08); } }
+  .cook-timer .cook-btn{ margin-top:0; }
+  .cook-nav{ display:flex; gap:12px; max-width:680px; width:100%; margin:0 auto; }
+  .cook-nav .cook-btn{ flex:1; justify-content:center; margin:0; }
+
+  @media (max-width:480px){ .steps-list::before, .steps-list::after{ left:21px; } }
+  @media (prefers-reduced-motion: reduce){
+    #ambient{ display:none; }
+    .reveal{ opacity:1; }
+    .reveal.in, .hero-text > *, .hero .hero-art svg{ animation:none; }
+  }
+  /* ================= MEET THE CHEF ================= */
+  :root{ --chef-img:url("data:image/jpeg;base64,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"); }
+  .byline{
+    display:inline-flex; align-items:center; gap:10px; margin-top:18px; text-decoration:none;
+    background:var(--card); border:1px solid var(--line); border-radius:999px; padding:6px 16px 6px 6px;
+    box-shadow:var(--shadow); font-size:.88rem; color:var(--espresso);
+    transition:transform .15s ease;
+  }
+  .byline:hover{ transform:translateY(-2px); }
+  .byline .av{
+    width:36px; height:36px; border-radius:50%; flex:none; border:2.5px solid #1F1B16;
+    background:var(--chef-img) center 30%/cover no-repeat;
+  }
+  .byline b{ font-family:'Fraunces',serif; font-weight:600; color:var(--basil-deep); }
+
+  #chef{ padding:clamp(40px,7vw,80px) 0 clamp(20px,4vw,40px); }
+  .chef-card{
+    display:grid; grid-template-columns:minmax(220px,340px) 1fr; gap:clamp(28px,5vw,60px); align-items:center;
+    background:var(--card); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow);
+    padding:clamp(22px,4vw,44px);
+  }
+  .chef-photo{ position:relative; width:100%; max-width:340px; margin:0 auto; transform:rotate(-2.5deg); }
+  .chef-photo .frame{
+    width:100%; aspect-ratio:1/1; border-radius:28px; border:5px solid #1F1B16;
+    background:var(--chef-img) center 28%/cover no-repeat;
+    box-shadow:10px 10px 0 var(--saffron);
+  }
+  .chef-photo .sticker{
+    position:absolute; right:-14px; bottom:-14px; background:var(--tomato); color:#fff;
+    font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;
+    padding:8px 14px; border-radius:999px; border:3px solid #1F1B16; transform:rotate(5deg);
+  }
+  .chef-photo .spark{ position:absolute; width:34px; height:34px; }
+  .chef-photo .s1{ top:-16px; left:-14px; }
+  .chef-photo .s2{ top:14px; right:-20px; width:26px; height:26px; }
+  .chef-text h2{ font-size:clamp(1.9rem,4vw,2.7rem); line-height:1.06; }
+  .chef-text h2 em{ color:var(--tomato); font-style:italic; }
+  .chef-text p{ color:rgba(43,33,24,.78); font-size:1.05rem; max-width:50ch; }
+  .chef-text .badges{ margin-bottom:6px; }
+  @media (max-width:860px){
+    .chef-card{ grid-template-columns:1fr; text-align:center; }
+    .chef-photo{ max-width:260px; }
+    .chef-text p{ margin-left:auto; margin-right:auto; }
+    .chef-text .badges{ justify-content:center; }
+    .byline{ margin-left:auto; margin-right:auto; }
+  }
+  /* ================= MOBILE-FRIENDLY PASS ================= */
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  :root{ padding-left:env(safe-area-inset-left,0px); padding-right:env(safe-area-inset-right,0px); }
+  a, button, .ing, .menu-card{ -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+  .ing{ -webkit-touch-callout:none; }
+  .ing:active, .menu-card:active{ transform:scale(.98); }
+  .cook-stage{ touch-action:pan-y; }
+  .cook{ height:100vh; height:100dvh; }
+  .cook-nav .cook-btn{ min-height:52px; }
+  body.nav-open{ overflow:hidden; }
+  #scrim{ position:fixed; inset:0; z-index:45; background:rgba(26,19,13,.45); opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease; }
+  body.nav-open #scrim{ opacity:1; visibility:visible; }
+
+  @media (hover:none){
+    .ing:hover{ transform:none; }
+    .menu-card:hover{ transform:none; box-shadow:var(--shadow); }
+    .byline:hover{ transform:none; }
+    .cook-btn:hover, .nav-cta:hover{ transform:none; box-shadow:0 4px 0 #7A0C12, 0 8px 14px rgba(120,12,18,.35); }
+    .cook-btn.ghost:hover{ box-shadow:0 4px 0 rgba(0,0,0,.4); }
+    .cook-btn:active, .nav-cta:active{ transform:translateY(4px); box-shadow:0 0 0 #7A0C12, 0 2px 6px rgba(120,12,18,.35); }
+  }
+
+  @media (max-width:720px){
+    /* solid nav so the slide-in panel anchors to the screen (backdrop-filter breaks fixed children) */
+    nav{ backdrop-filter:none; -webkit-backdrop-filter:none; background:rgba(242,232,213,.97); }
+    .burger{ width:44px; height:44px; align-items:center; justify-content:center; margin-right:-8px; }
+    .nav-links{
+      height:100vh; height:100dvh; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+      padding:calc(env(safe-area-inset-top,0px) + 76px) 24px calc(env(safe-area-inset-bottom,0px) + 28px);
+      gap:0;
+    }
+    .nav-links li{ width:100%; }
+    .nav-links a{ display:block; padding:13px 4px; min-height:44px; font-size:1.05rem; border-bottom:1px solid var(--line); }
+    .nav-links a::after{ display:none; }
+    .nav-links li:last-child{ margin-top:16px; }
+    .nav-links .nav-cta{ text-align:center; padding:14px 20px !important; font-size:1rem !important; border-bottom:0; }
+
+    /* recipe menu becomes a swipeable carousel */
+    .menu-grid{
+      display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px;
+      padding-top:6px; padding-bottom:26px; margin-bottom:-12px; scroll-padding-left:16px;
+      scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    }
+    .menu-grid::-webkit-scrollbar{ display:none; }
+    .menu-card{ flex:0 0 78%; scroll-snap-align:start; }
+    .step-time{ font-size:.78rem; }
+    .eyebrow{ font-size:.76rem; }
+  }
+
+  @media (max-width:480px){
+    .badge{ font-size:.76rem; }
+    .ing-amt{ font-size:.78rem; }
+    .chef-photo .sticker{ right:-6px; bottom:-10px; }
+    .chef-photo .s2{ right:-8px; }
+    .cook-p{ max-width:none; }
+  }
+
+  @media (max-height:500px) and (orientation:landscape){
+    .cook-ic{ display:none; }
+    .cook-stage{ gap:8px; }
+    .cook-h{ font-size:1.6rem; }
+    .hero{ padding-top:24px; }
+  }
+
+  /* ===== aesthetic portrait ===== */
+  @keyframes frameFloat{
+    0%, 100%{ transform:translateY(0px) rotate(0deg); }
+    50%{ transform:translateY(-10px) rotate(1deg); }
+  }
+  @keyframes framePulse{
+    0%, 100%{ box-shadow:0 4px 20px rgba(31,27,22,0.15); }
+    50%{ box-shadow:0 8px 30px rgba(193,18,31,0.25); }
+  }
+  @keyframes stickerBounce{
+    0%, 100%{ transform:rotate(5deg) scale(1); }
+    50%{ transform:rotate(-5deg) scale(1.05); }
+  }
+  .chef-card{ position:relative; overflow:hidden; background:#FFFDF6; }
+  .chef-card::before{ display:none; }
+  .chef-card > *{ position:relative; }
+  .chef-photo{
+    animation:frameFloat 4s ease-in-out infinite;
+    transition:transform 0.3s ease;
+  }
+  .chef-photo:hover{
+    animation:none;
+    transform:translateY(-5px) scale(1.02);
+  }
+  .chef-photo::before{ display:none; }
+  .chef-photo::after{ display:none; }
+  .chef-photo .frame{
+    position:relative; overflow:hidden; aspect-ratio:4/5; border-radius:8px;
+    background-position:center 24%; animation:framePulse 3s ease-in-out infinite;
+    border:2px solid #1F1B16;
+    transition:border-color 0.3s ease;
+  }
+  .chef-photo:hover .frame{
+    border-color:var(--tomato);
+    animation:none;
+    box-shadow:0 8px 30px rgba(193,18,31,0.3);
+  }
+  .chef-photo .frame::before{ display:none; }
+  .chef-photo .frame::after{ display:none; }
+  .chef-photo .spark{ display:none; }
+  .chef-photo .s2{ display:none; }
+  .chef-photo .sticker{
+    animation:stickerBounce 2s ease-in-out infinite;
+  }
+  .chef-photo:hover .sticker{
+    animation:stickerBounce 0.5s ease-in-out infinite;
+  }
+  @keyframes chefBob{ 50%{ transform:translateY(-7px); } }
+  @keyframes chefTwinkle{ 0%,100%{ transform:scale(1) rotate(0); } 50%{ transform:scale(1.3) rotate(18deg); } }
+  @keyframes chefSpin{ to{ transform:rotate(360deg); } }
+  @media (max-width:480px){ .chef-photo::before{ transform:translate(11px,11px); } }
+  @media (prefers-reduced-motion: reduce){ .chef-photo, .chef-photo .frame, .chef-photo .sticker{ animation:none; } }
+
+  /* ===== fixes found in real phone testing ===== */
+  .step{ position:relative; z-index:2; }
+  .brand{ padding:9px 0; }
+  @media (max-width:720px){
+    .nav-links{ box-shadow:none; visibility:hidden; transition:transform .35s ease, visibility 0s linear .35s; }
+    .nav-links.open{ box-shadow:-8px 0 30px rgba(43,33,24,.15); visibility:visible; transition:transform .35s ease, visibility 0s; }
+  }
+
+  /* ===== logo alignment: keep nav side padding identical when scrolled ===== */
+  nav.scrolled .nav-inner{ padding-left:24px; padding-right:24px; }
+  @media (max-width:1024px){ nav.scrolled .nav-inner{ padding-left:20px; padding-right:20px; } }
+  @media (max-width:480px){ nav.scrolled .nav-inner{ padding-left:16px; padding-right:16px; } }
+  /* ================= ANIMATED DROPDOWN NAV ================= */
+  .nav-links{ position:relative; align-items:center; }
+  .nav-links::before{
+    content:""; position:absolute; left:var(--px,0px); width:var(--pw,0px); height:38px; top:50%; margin-top:-19px;
+    border-radius:999px; background:color-mix(in srgb, var(--basil) 12%, transparent);
+    opacity:var(--po,0); pointer-events:none;
+    transition:left .35s cubic-bezier(.2,.8,.2,1), width .35s cubic-bezier(.2,.8,.2,1), opacity .2s ease;
+  }
+  .nav-links.no-tr::before{ transition:none; }
+  .has-dd{ position:relative; }
+  .dd-toggle{
+    position:relative; display:inline-flex; align-items:center; gap:6px; padding:4px 0; cursor:pointer;
+    font:inherit; font-weight:600; font-size:.92rem; color:var(--basil-deep); background:none; border:0;
+  }
+  .dd-toggle svg{ width:12px; height:12px; transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+  .has-dd.open .dd-toggle svg{ transform:rotate(180deg); }
+  .dd-toggle::after{ content:""; position:absolute; left:0; bottom:-2px; width:0; height:2px; background:var(--tomato); transition:width .25s ease; }
+  .dd-toggle:hover::after, .has-dd.open .dd-toggle::after{ width:100%; }
+
+  .dd-panel{
+    position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:16px; width:max-content;
+    visibility:hidden; pointer-events:none; transition:visibility 0s linear .3s;
+  }
+  .has-dd.open .dd-panel{ visibility:visible; pointer-events:auto; transition-delay:0s; }
+  .dd-inner{
+    position:relative; display:grid; grid-template-columns:repeat(2, minmax(180px,1fr)); gap:4px; padding:10px;
+    background:var(--card); border:1px solid var(--line); border-radius:20px; box-shadow:0 24px 50px rgba(43,33,24,.22);
+    transform:translateY(-12px) scale(.94); transform-origin:50% 0; opacity:0;
+    transition:transform .45s cubic-bezier(.2,.9,.3,1.2), opacity .25s ease;
+  }
+  .has-dd.open .dd-inner{ transform:none; opacity:1; }
+  .dd-inner::before{
+    content:""; position:absolute; top:-8px; left:50%; width:14px; height:14px; margin-left:-7px;
+    background:var(--card); border-left:1px solid var(--line); border-top:1px solid var(--line); transform:rotate(45deg);
+  }
+  .dd-inner a{
+    display:flex; align-items:center; gap:10px; padding:11px 12px !important; border-radius:12px; white-space:nowrap;
+    opacity:0; transform:translateY(-8px);
+    transition:background .2s ease, opacity .3s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .dd-inner a::after{ display:none; }
+  .has-dd.open .dd-inner a{ opacity:1; transform:none; transition-delay:0s, calc(var(--i,0) * 45ms + 90ms), calc(var(--i,0) * 45ms + 90ms); }
+  .dd-inner a:hover, .dd-inner a:focus-visible{ background:color-mix(in srgb, var(--c) 18%, transparent); }
+  .dd-dot{ width:11px; height:11px; border-radius:50%; background:var(--c); border:2px solid #1F1B16; flex:none; transition:transform .3s cubic-bezier(.2,.9,.3,1.6); }
+  .dd-inner a:hover .dd-dot{ transform:scale(1.5); }
+  .dd-tag{ margin-left:auto; padding-left:14px; font-family:'JetBrains Mono',monospace; font-size:.7rem; font-weight:400; color:rgba(43,33,24,.55); }
+
+  @media (max-width:720px){
+    /* menu now DROPS DOWN from the top bar instead of sliding in from the side */
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0; width:auto; height:auto; max-height:calc(100vh - 96px); max-height:calc(100dvh - 96px);
+      padding:8px 20px calc(env(safe-area-inset-bottom,0px) + 22px); gap:0; overflow-y:auto; overscroll-behavior:contain;
+      background:var(--card); border-bottom:1px solid var(--line); border-radius:0 0 24px 24px;
+      transform:translateY(-14px); opacity:0; visibility:hidden; box-shadow:none;
+      clip-path:inset(0 -40px 100% -40px round 0 0 24px 24px);
+      transition:clip-path .5s cubic-bezier(.2,.8,.2,1), transform .5s cubic-bezier(.2,.8,.2,1), opacity .3s ease, visibility 0s linear .5s;
+    }
+    .nav-links.open{
+      transform:none; opacity:1; visibility:visible; box-shadow:0 26px 40px rgba(43,33,24,.22);
+      clip-path:inset(0 -40px -60px -40px round 0 0 24px 24px);
+      transition:clip-path .5s cubic-bezier(.2,.8,.2,1), transform .5s cubic-bezier(.2,.8,.2,1), opacity .3s ease, visibility 0s;
+    }
+    .nav-links::before{ display:none; }
+    .nav-links > li{ opacity:0; transform:translateY(-12px); transition:opacity .3s ease, transform .4s cubic-bezier(.2,.8,.2,1); }
+    .nav-links.open > li{ opacity:1; transform:none; transition-delay:calc(var(--i,0) * 70ms + 140ms); }
+
+    .dd-toggle{ display:flex; width:100%; justify-content:space-between; padding:13px 4px; min-height:44px; font-size:1.05rem; border-bottom:1px solid var(--line); }
+    .dd-toggle::after{ display:none; }
+    .dd-panel{
+      position:static; transform:none; width:auto; padding:0; visibility:visible; pointer-events:auto;
+      display:grid; grid-template-rows:0fr; transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1);
+    }
+    .has-dd.open .dd-panel{ grid-template-rows:1fr; }
+    .dd-inner{
+      display:block; min-height:0; overflow:hidden; padding:0; background:transparent; border:0; box-shadow:none;
+      transform:none; opacity:1; visibility:hidden; transition:visibility 0s linear .5s;
+    }
+    .has-dd.open .dd-inner{ visibility:visible; transition:visibility 0s; transform:none; }
+    .dd-inner::before{ display:none; }
+    .dd-inner a{ display:flex; padding:12px 8px 12px 14px !important; font-size:1rem; border-bottom:0; min-height:44px; }
+    .dd-tag{ font-size:.74rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <svg class="pot" viewBox="0 0 24 24" fill="none"><path d="M4 10h16v3a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7v-3Z" stroke="#48592A" stroke-width="1.6"/><path d="M2 10h20" stroke="#48592A" stroke-width="1.6" stroke-linecap="round"/><path d="M7 10V7a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3" stroke="#48592A" stroke-width="1.6"/></svg>
+      Chef Kris
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#top">Home</a></li>
+      <li class="has-dd" id="ddWrap">
+        <button class="dd-toggle" id="ddToggle" type="button" aria-expanded="false" aria-controls="ddPanel">Recipes <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button>
+        <div class="dd-panel" id="ddPanel"><div class="dd-inner">
+          <a href="#pasta" style="--c:#E9B949"><span class="dd-dot"></span>Shrimp Pasta<span class="dd-tag">20 min</span></a>
+          <a href="#cake" style="--c:#D98A3A"><span class="dd-dot"></span>Carrot Cake<span class="dd-tag">70 min</span></a>
+          <a href="#salmon" style="--c:#E9764F"><span class="dd-dot"></span>Salmon Pasta<span class="dd-tag">25 min</span></a>
+          <a href="#champorado" style="--c:#8B5FA8"><span class="dd-dot"></span>Ube Champorado<span class="dd-tag">35 min</span></a>
+          <a href="#cheesecake" style="--c:#E5344A"><span class="dd-dot"></span>Cheesecake<span class="dd-tag">90 min</span></a>
+          <a href="#sinigang" style="--c:#E7B764"><span class="dd-dot"></span>Sinigang<span class="dd-tag">55 min</span></a>
+          <a href="#spicyshrimp" style="--c:#C1121F"><span class="dd-dot"></span>Spicy Shrimp<span class="dd-tag">15 min</span></a>
+        </div></div>
+      </li>
+      <li><a href="#chef">About</a></li>
+      <li><a href="#pasta-steps" class="nav-cta">Start Cooking</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Open menu" aria-controls="navLinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-text">
+    <span class="eyebrow">Weeknight · Serves 3 · 20 minutes</span>
+    <h1>Garlic Butter <em>Shrimp</em><br>Pasta</h1>
+    <p>A one-skillet supper built on three things done right: sweet shrimp, brown butter, and pasta water that turns into a glossy, garlicky sauce all on its own.</p>
+    <a class="byline" href="#chef"><span class="av" role="img" aria-label="Portrait of Chef Kris"></span><span>Recipes by <b>Chef Kris</b> · The Gullible Cook</span></a>
+    <div class="badges">
+      <div class="badge"><b>20 min</b>total time</div>
+      <div class="badge"><b>3</b>servings</div>
+      <div class="badge"><b>Easy</b>difficulty</div>
+      <div class="badge"><b>1 pan</b>to wash</div>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 400 400" fill="none">
+      <defs>
+        <filter id="animeShadow" x="-40%" y="-40%" width="180%" height="180%">
+          <feDropShadow dx="0" dy="5" stdDeviation="0" flood-color="#1F1B16" flood-opacity="0.9"/>
+        </filter>
+      </defs>
+
+      <!-- impact speed lines -->
+      <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.18">
+        <path d="M60 240h40M300 240h40M80 160l30 20M290 180l-30 20M80 320l30-20M290 300l-30-20"/>
+      </g>
+
+      <ellipse cx="200" cy="336" rx="150" ry="16" fill="#1F1B16" opacity="0.16"/>
+
+      <g class="skillet-shake">
+        <!-- handle -->
+        <rect x="312" y="228" width="76" height="20" rx="9" fill="#5C4B39" stroke="#1F1B16" stroke-width="4"/>
+        <!-- pan body -->
+        <circle cx="200" cy="240" r="130" fill="#5A4433" stroke="#1F1B16" stroke-width="6"/>
+        <circle cx="200" cy="240" r="112" fill="#3A2E22" stroke="#1F1B16" stroke-width="4"/>
+        <circle cx="200" cy="240" r="98" fill="#F0C64E" stroke="#1F1B16" stroke-width="5"/>
+        <!-- flat cel-shade crescent -->
+        <path d="M240 158a98 98 0 0 1 46 130a108 108 0 0 0-46-130Z" fill="#D9A93C" opacity="0.85"/>
+        <!-- glossy highlight -->
+        <ellipse cx="168" cy="200" rx="34" ry="12" fill="#FFF6D8" opacity="0.9" transform="rotate(-12 168 200)"/>
+
+        <!-- pasta strands: bold outlined ribbons -->
+        <g stroke="#1F1B16" stroke-width="8" stroke-linecap="round" fill="none">
+          <path d="M120 258c26 24 60 30 84 20c-14 12-38 34-18 44c22 10 38-16 46-32"/>
+          <path d="M138 288c22 12 50 8 62-6c-2 16 6 34 26 30c18-4 20-26 16-40"/>
+          <path d="M150 210c20-10 46-8 60 4c-4-14 4-30 22-30c16 0 24 18 20 32"/>
+        </g>
+        <g stroke="#F7DE85" stroke-width="4.5" stroke-linecap="round" fill="none">
+          <path d="M120 258c26 24 60 30 84 20c-14 12-38 34-18 44c22 10 38-16 46-32"/>
+          <path d="M138 288c22 12 50 8 62-6c-2 16 6 34 26 30c18-4 20-26 16-40"/>
+          <path d="M150 210c20-10 46-8 60 4c-4-14 4-30 22-30c16 0 24 18 20 32"/>
+        </g>
+
+        <!-- shrimp: bold cel-shaded -->
+        <g stroke="#1F1B16" stroke-width="4.5" stroke-linejoin="round">
+          <path d="M144 224c-6-16 8-30 22-28c-2 8-8 12-6 20c8-2 16-10 24-6c8 4 6 16-2 22c-10 8-30 6-38-8Z" fill="#F2775A" transform="rotate(-18 150 222)"/>
+          <path d="M169 249c-6-16 8-30 22-28c-2 8-8 12-6 20c8-2 16-10 24-6c8 4 6 16-2 22c-10 8-30 6-38-8Z" fill="#F2775A" transform="rotate(12 175 247)"/>
+          <path d="M229 209c-6-16 8-30 22-28c-2 8-8 12-6 20c8-2 16-10 24-6c8 4 6 16-2 22c-10 8-30 6-38-8Z" fill="#F2775A" transform="rotate(38 235 207)"/>
+          <path d="M249 244c-6-16 8-30 22-28c-2 8-8 12-6 20c8-2 16-10 24-6c8 4 6 16-2 22c-10 8-30 6-38-8Z" fill="#F2775A" transform="rotate(-32 255 242)"/>
+        </g>
+        <g fill="#FFC7AE" opacity="0.9">
+          <ellipse cx="140" cy="216" rx="4" ry="2" transform="rotate(-18 140 216)"/>
+          <ellipse cx="165" cy="241" rx="4" ry="2" transform="rotate(12 165 241)"/>
+          <ellipse cx="225" cy="201" rx="4" ry="2" transform="rotate(38 225 201)"/>
+          <ellipse cx="245" cy="236" rx="4" ry="2" transform="rotate(-32 245 236)"/>
+        </g>
+
+        <!-- garlic slivers -->
+        <g fill="#FFFBEF" stroke="#1F1B16" stroke-width="2.5">
+          <ellipse cx="152" cy="270" rx="7" ry="3.4" transform="rotate(20 152 270)"/>
+          <ellipse cx="202" cy="286" rx="7" ry="3.4" transform="rotate(-15 202 286)"/>
+          <ellipse cx="242" cy="270" rx="7" ry="3.4" transform="rotate(35 242 270)"/>
+          <ellipse cx="178" cy="200" rx="7" ry="3.4" transform="rotate(-25 178 200)"/>
+        </g>
+        <!-- parsley flecks -->
+        <g fill="#4A6B27" stroke="#1F1B16" stroke-width="1.5">
+          <circle cx="150" cy="265" r="3.4"/>
+          <circle cx="200" cy="280" r="3.8"/>
+          <circle cx="238" cy="266" r="3.2"/>
+          <circle cx="180" cy="196" r="3.4"/>
+          <circle cx="216" cy="234" r="3"/>
+        </g>
+      </g>
+
+      <!-- anime-style steam swooshes -->
+      <g class="steam" stroke="#1F1B16" stroke-width="3.5" stroke-linecap="round" fill="#FFFFFF">
+        <path d="M152 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+        <path d="M204 146c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+        <path d="M256 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+      </g>
+
+      <!-- sparkle accents -->
+      <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+        <path d="M84 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+        <path d="M330 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="wrap menu-grid">
+    <a class="menu-card" href="#pasta">
+      <span class="menu-tag mono">Savory · 20 min</span>
+      <h3>Garlic Butter Shrimp Pasta</h3>
+      <p>One skillet, sweet shrimp, glossy garlic-butter sauce.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+    <a class="menu-card" href="#cake">
+      <span class="menu-tag mono">Sweet · 70 min</span>
+      <h3>Classic Carrot Cake</h3>
+      <p>Spiced layers, tangy cream cheese frosting, toasted walnuts.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+    <a class="menu-card" href="#salmon">
+      <span class="menu-tag mono">Savory · 25 min</span>
+      <h3>Creamy Salmon Pasta</h3>
+      <p>Seared salmon flaked through a lemony parmesan cream sauce.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+    <a class="menu-card" href="#champorado">
+      <span class="menu-tag mono">Breakfast · 35 min</span>
+      <h3>Ube Champorado</h3>
+      <p>Sticky rice porridge in cocoa and ube, finished with condensed milk.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+    <a class="menu-card" href="#cheesecake">
+      <span class="menu-tag mono">Sweet · 90 min</span>
+      <h3>Chef Kris’s Special Cheesecake</h3>
+      <p>Silky baked cheesecake, graham crust, glossy strawberry sauce.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+    <a class="menu-card" href="#sinigang">
+      <span class="menu-tag mono">Savory · 55 min</span>
+      <h3>Sinigang na Baboy</h3>
+      <p>Tangy tamarind pork soup loaded with vegetables, Filipino comfort in a bowl.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+    <a class="menu-card" href="#spicyshrimp">
+      <span class="menu-tag mono">Savory · 15 min</span>
+      <h3>Spicy Buttered Shrimp</h3>
+      <p>Whole shrimp seared in chili-garlic butter, finished with calamansi.</p>
+      <span class="menu-go">Jump to recipe →</span>
+    </a>
+  </div>
+</section>
+
+<section id="chef">
+  <div class="wrap">
+    <div class="chef-card">
+      <div class="chef-photo">
+        <div class="frame" role="img" aria-label="Portrait of Chef Kris in a black chef jacket"></div>
+        <svg class="spark s1" viewBox="0 0 40 40"><path d="M20 2l5 14 14 5-14 5-5 14-5-14-14-5 14-5Z" fill="#FFE9A8" stroke="#1F1B16" stroke-width="2.4" stroke-linejoin="round"/></svg>
+        <svg class="spark s2" viewBox="0 0 40 40"><path d="M20 2l5 14 14 5-14 5-5 14-5-14-14-5 14-5Z" fill="#FFE9A8" stroke="#1F1B16" stroke-width="2.4" stroke-linejoin="round"/></svg>
+        <span class="sticker">Owner &amp; Author</span>
+      </div>
+      <div class="chef-text">
+        <span class="eyebrow">Meet the chef</span>
+        <h2>Chef Kris,<br><em>The Gullible Cook</em></h2>
+        <p>Owner and author of this website. Every dish here is written out step by step, so you can cook along with confidence, from Filipino comfort food to creamy pastas and baked sweets.</p>
+        <div class="badges">
+          <div class="badge"><b>Owner</b>of the website</div>
+          <div class="badge"><b>Author</b>of every recipe</div>
+          <div class="badge"><b>7</b>recipes so far</div>
+        </div>
+        <a class="cook-btn" href="#menu" style="text-decoration:none;">Browse the recipes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pasta">
+  <div class="section-head">
+    <span class="eyebrow">Recipe One</span>
+    <h2>Garlic Butter Shrimp Pasta</h2>
+  </div>
+  <div class="divider wrap"></div>
+  <div class="wrap ing-grid" id="pastaIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="pasta-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="pastaStepsList"></div>
+  </div>
+</section>
+
+<section id="cake">
+  <div class="wrap cake-hero">
+    <div class="cake-hero-text">
+      <span class="eyebrow">Recipe Two · Baked · Serves 10</span>
+      <h2>Classic <em>Carrot</em> Cake</h2>
+      <p>Warmly spiced, packed with fresh-grated carrot, and finished with a tangy cream cheese frosting. Bakes as two honest layers, no fuss.</p>
+      <div class="badges">
+        <div class="badge"><b>70 min</b>total time</div>
+        <div class="badge"><b>10</b>servings</div>
+        <div class="badge"><b>Medium</b>difficulty</div>
+        <div class="badge"><b>2 layers</b>+ frosting</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.16">
+          <path d="M60 220h36M304 220h36M76 150l28 18M296 168l-28 18M76 300l28-18M296 282l-28-18"/>
+        </g>
+
+        <ellipse cx="200" cy="332" rx="140" ry="16" fill="#1F1B16" opacity="0.16"/>
+
+        <g>
+          <rect x="90" y="200" width="220" height="60" rx="6" fill="#A5773D" stroke="#1F1B16" stroke-width="5"/>
+          <rect x="90" y="150" width="220" height="60" rx="6" fill="#C08847" stroke="#1F1B16" stroke-width="5"/>
+          <!-- cel-shade crescent on top layer -->
+          <path d="M260 150h50v60h-50a30 30 0 0 0 0-60Z" fill="#9A6A32" opacity="0.55"/>
+          <!-- crumb speckle -->
+          <g fill="#5A3C1E">
+            <circle cx="112" cy="168" r="2.2"/><circle cx="140" cy="178" r="1.8"/><circle cx="168" cy="162" r="2.4"/>
+            <circle cx="196" cy="182" r="2"/><circle cx="224" cy="166" r="2.2"/><circle cx="252" cy="180" r="1.8"/>
+            <circle cx="280" cy="164" r="2.4"/><circle cx="120" cy="222" r="2.2"/><circle cx="152" cy="236" r="2"/>
+            <circle cx="184" cy="218" r="2.2"/><circle cx="216" cy="238" r="1.8"/><circle cx="248" cy="220" r="2.4"/>
+            <circle cx="280" cy="234" r="2"/>
+          </g>
+
+          <rect x="80" y="130" width="240" height="24" rx="12" fill="#FFFDF5" stroke="#1F1B16" stroke-width="5"/>
+          <rect x="80" y="196" width="240" height="14" rx="7" fill="#FFFDF5" stroke="#1F1B16" stroke-width="4"/>
+          <rect x="80" y="256" width="240" height="14" rx="7" fill="#FFFDF5" stroke="#1F1B16" stroke-width="4"/>
+          <ellipse cx="140" cy="136" rx="40" ry="5" fill="#ffffff"/>
+          <path class="frosting-drip" d="M84 130c4 18-8 24-2 40M124 130c4 18-8 24-2 40M164 130c4 18-8 24-2 40M204 130c4 18-8 24-2 40M244 130c4 18-8 24-2 40M284 130c4 18-8 24-2 40" stroke="#FFFDF5" stroke-width="10" stroke-linecap="round"/>
+          <path class="frosting-drip" d="M84 130c4 18-8 24-2 40M124 130c4 18-8 24-2 40M164 130c4 18-8 24-2 40M204 130c4 18-8 24-2 40M244 130c4 18-8 24-2 40M284 130c4 18-8 24-2 40" stroke="#1F1B16" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+
+          <!-- carrot garnish -->
+          <g>
+            <path d="M200 96c-6 14-18 16-18 30 10 6 26 6 36 0 0-14-12-16-18-30Z" fill="#F2A02C" stroke="#1F1B16" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M195 108l10 0M193 116l14 0M196 123l8 0" stroke="#B5720F" stroke-width="1.6" opacity="0.7"/>
+            <ellipse cx="196" cy="105" rx="5" ry="3" fill="#FFD98A" opacity="0.8"/>
+            <path d="M200 96c4-10 2-18-2-24M200 96c-2-9 1-16 5-21" stroke="#4A6B27" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </g>
+        </g>
+
+        <!-- toasted walnut pieces on frosting -->
+        <g fill="#8A6238" stroke="#1F1B16" stroke-width="2.2">
+          <ellipse cx="150" cy="140" rx="7" ry="5" transform="rotate(-10 150 140)"/>
+          <ellipse cx="250" cy="142" rx="7" ry="5" transform="rotate(14 250 142)"/>
+          <ellipse cx="130" cy="270" rx="6.5" ry="4.6" transform="rotate(8 130 270)"/>
+          <ellipse cx="270" cy="268" rx="6.5" ry="4.6" transform="rotate(-12 270 268)"/>
+        </g>
+
+        <!-- sparkle accents -->
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+          <path d="M76 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+          <path d="M322 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+
+  <div class="divider wrap" style="margin-top:50px;"></div>
+  <div class="section-head">
+    <span class="eyebrow">What you’ll need</span>
+    <h2>Ingredients</h2>
+  </div>
+  <div class="wrap ing-grid" id="cakeIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="cake-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="cakeStepsList"></div>
+  </div>
+</section>
+
+<section id="salmon">
+  <div class="wrap cake-hero">
+    <div class="cake-hero-text">
+      <span class="eyebrow">Recipe Three · Savory · Serves 3</span>
+      <h2>Creamy <em>Salmon</em> Pasta</h2>
+      <p>Seared salmon flaked through a lemony parmesan cream sauce, finished with fresh dill. Restaurant-feeling, one-skillet easy.</p>
+      <div class="badges">
+        <div class="badge"><b>25 min</b>total time</div>
+        <div class="badge"><b>3</b>servings</div>
+        <div class="badge"><b>Easy</b>difficulty</div>
+        <div class="badge"><b>1 pan</b>to wash</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.18">
+          <path d="M60 240h40M300 240h40M80 160l30 20M290 180l-30 20M80 320l30-20M290 300l-30-20"/>
+        </g>
+
+        <ellipse cx="200" cy="336" rx="150" ry="16" fill="#1F1B16" opacity="0.16"/>
+
+        <g class="skillet-shake">
+          <rect x="312" y="228" width="76" height="20" rx="9" fill="#5C4B39" stroke="#1F1B16" stroke-width="4"/>
+          <circle cx="200" cy="240" r="130" fill="#5A4433" stroke="#1F1B16" stroke-width="6"/>
+          <circle cx="200" cy="240" r="112" fill="#3A2E22" stroke="#1F1B16" stroke-width="4"/>
+          <circle cx="200" cy="240" r="98" fill="#EFDEB4" stroke="#1F1B16" stroke-width="5"/>
+          <path d="M240 158a98 98 0 0 1 46 130a108 108 0 0 0-46-130Z" fill="#DCC593" opacity="0.85"/>
+          <ellipse cx="168" cy="200" rx="34" ry="12" fill="#FFFBF0" opacity="0.9" transform="rotate(-12 168 200)"/>
+
+          <!-- pasta strands -->
+          <g stroke="#1F1B16" stroke-width="8" stroke-linecap="round" fill="none">
+            <path d="M120 258c26 24 60 30 84 20c-14 12-38 34-18 44c22 10 38-16 46-32"/>
+            <path d="M138 288c22 12 50 8 62-6c-2 16 6 34 26 30c18-4 20-26 16-40"/>
+            <path d="M150 210c20-10 46-8 60 4c-4-14 4-30 22-30c16 0 24 18 20 32"/>
+          </g>
+          <g stroke="#F3E4C3" stroke-width="4.5" stroke-linecap="round" fill="none">
+            <path d="M120 258c26 24 60 30 84 20c-14 12-38 34-18 44c22 10 38-16 46-32"/>
+            <path d="M138 288c22 12 50 8 62-6c-2 16 6 34 26 30c18-4 20-26 16-40"/>
+            <path d="M150 210c20-10 46-8 60 4c-4-14 4-30 22-30c16 0 24 18 20 32"/>
+          </g>
+
+          <!-- seared salmon chunks -->
+          <g stroke="#1F1B16" stroke-width="4.5" stroke-linejoin="round">
+            <path d="M146 228c-4-14 8-24 20-22c10 2 16 12 12 22c-4 10-16 16-26 10c-6-4-6-6-6-10Z" fill="#E9764F" transform="rotate(-10 156 228)"/>
+            <path d="M176 258c-4-14 8-24 20-22c10 2 16 12 12 22c-4 10-16 16-26 10c-6-4-6-6-6-10Z" fill="#E9764F" transform="rotate(16 186 258)"/>
+            <path d="M232 214c-4-14 8-24 20-22c10 2 16 12 12 22c-4 10-16 16-26 10c-6-4-6-6-6-10Z" fill="#E9764F" transform="rotate(-22 242 214)"/>
+            <path d="M250 252c-4-14 8-24 20-22c10 2 16 12 12 22c-4 10-16 16-26 10c-6-4-6-6-6-10Z" fill="#E9764F" transform="rotate(30 260 252)"/>
+          </g>
+          <g stroke="#8C3420" stroke-width="1.8" opacity="0.7">
+            <path d="M150 224l14 8"/>
+            <path d="M182 252l14 8"/>
+            <path d="M238 210l14 8"/>
+            <path d="M256 246l14 8"/>
+          </g>
+
+          <!-- lemon wheel -->
+          <g>
+            <circle cx="196" cy="290" r="15" fill="#F0D65C" stroke="#1F1B16" stroke-width="4"/>
+            <circle cx="196" cy="290" r="15" fill="none" stroke="#FFF6D2" stroke-width="4"/>
+            <g stroke="#FFF6D2" stroke-width="2" opacity="0.9">
+              <path d="M196 278v24M184 290h24M188 282l16 16M188 298l16-16"/>
+            </g>
+            <circle cx="196" cy="290" r="15" fill="none" stroke="#1F1B16" stroke-width="3"/>
+          </g>
+
+          <!-- dill flecks -->
+          <g stroke="#4A6B27" stroke-width="2" stroke-linecap="round" opacity="0.9">
+            <path d="M150 268l4 4M156 264l3 5M198 202l4 4M204 198l3 5M240 264l4 4"/>
+          </g>
+          <g fill="#4A6B27" stroke="#1F1B16" stroke-width="1.4">
+            <circle cx="200" cy="272" r="3"/>
+            <circle cx="168" cy="200" r="2.8"/>
+            <circle cx="252" cy="234" r="2.8"/>
+          </g>
+        </g>
+
+        <!-- anime-style steam swooshes -->
+        <g class="steam" stroke="#1F1B16" stroke-width="3.5" stroke-linecap="round" fill="#FFFFFF">
+          <path d="M152 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M204 146c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M256 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+        </g>
+
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+          <path d="M84 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+          <path d="M330 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider wrap" style="margin-top:50px;"></div>
+  <div class="section-head">
+    <span class="eyebrow">What you’ll need</span>
+    <h2>Ingredients</h2>
+  </div>
+  <div class="wrap ing-grid" id="salmonIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="salmon-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="salmonStepsList"></div>
+  </div>
+</section>
+
+<section id="champorado">
+  <div class="wrap cake-hero">
+    <div class="cake-hero-text">
+      <span class="eyebrow">Recipe Four · Breakfast · Serves 4</span>
+      <h2>Ube <em>Champorado</em></h2>
+      <p>A Filipino sticky rice porridge cooked in cocoa and sweet ube, ladled warm and finished with a swirl of condensed milk. Comfort in a bowl.</p>
+      <div class="badges">
+        <div class="badge"><b>35 min</b>total time</div>
+        <div class="badge"><b>4</b>servings</div>
+        <div class="badge"><b>Easy</b>difficulty</div>
+        <div class="badge"><b>1 pot</b>to wash</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.16">
+          <path d="M60 220h36M304 220h36M76 150l28 18M296 168l-28 18M76 300l28-18M296 282l-28-18"/>
+        </g>
+
+        <ellipse cx="200" cy="332" rx="140" ry="18" fill="#1F1B16" opacity="0.16"/>
+
+        <g>
+          <ellipse cx="200" cy="240" rx="132" ry="100" fill="#F1E7D2" stroke="#1F1B16" stroke-width="6"/>
+          <ellipse cx="200" cy="222" rx="132" ry="46" fill="#D9C08A" stroke="#1F1B16" stroke-width="5"/>
+
+          <ellipse cx="200" cy="216" rx="112" ry="36" fill="#5E3B78" stroke="#1F1B16" stroke-width="5"/>
+          <!-- cel-shade crescent -->
+          <path d="M280 190a36 36 0 0 1 20 26a112 112 0 0 0-20-26Z" fill="#3A2145" opacity="0.7"/>
+          <ellipse cx="168" cy="204" rx="30" ry="9" fill="#A87DC2" opacity="0.9"/>
+
+          <!-- condensed milk drizzle swirl -->
+          <path class="frosting-drip" d="M120 210c14 6 22-4 36 0c14 4 18 14 32 10c14-4 16-14 30-10c14 4 20 12 34 6" stroke="#FFFDF6" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path class="frosting-drip" d="M120 210c14 6 22-4 36 0c14 4 18 14 32 10c14-4 16-14 30-10c14 4 20 12 34 6" stroke="#1F1B16" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.5"/>
+
+          <!-- toasted coconut flecks -->
+          <g fill="#F7EFDB" stroke="#1F1B16" stroke-width="1.6">
+            <ellipse cx="150" cy="200" rx="4" ry="2.4" transform="rotate(20 150 200)"/>
+            <ellipse cx="248" cy="198" rx="4" ry="2.4" transform="rotate(-15 248 198)"/>
+            <ellipse cx="200" cy="192" rx="4" ry="2.4" transform="rotate(10 200 192)"/>
+            <ellipse cx="176" cy="222" rx="4" ry="2.4" transform="rotate(-25 176 222)"/>
+            <ellipse cx="226" cy="220" rx="4" ry="2.4" transform="rotate(30 226 220)"/>
+          </g>
+        </g>
+
+        <!-- anime-style steam swooshes -->
+        <g class="steam" stroke="#1F1B16" stroke-width="3.5" stroke-linecap="round" fill="#FFFFFF">
+          <path d="M152 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M204 146c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M256 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+        </g>
+
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+          <path d="M76 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+          <path d="M322 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider wrap" style="margin-top:50px;"></div>
+  <div class="section-head">
+    <span class="eyebrow">What you’ll need</span>
+    <h2>Ingredients</h2>
+  </div>
+  <div class="wrap ing-grid" id="champoradoIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="champorado-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="champoradoStepsList"></div>
+  </div>
+</section>
+
+<section id="cheesecake">
+  <div class="wrap cake-hero">
+    <div class="cake-hero-text">
+      <span class="eyebrow">Recipe Five · Baked · Serves 10</span>
+      <h2>Chef Kris’s <em>Special</em> Cheesecake</h2>
+      <p>Silky baked cheesecake on a buttery graham crust, chilled overnight and finished with a glossy strawberry sauce. The house special, worth the wait.</p>
+      <div class="badges">
+        <div class="badge"><b>90 min</b>total time</div>
+        <div class="badge"><b>10</b>servings</div>
+        <div class="badge"><b>Medium</b>difficulty</div>
+        <div class="badge"><b>+4 hr</b>chill time</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.16">
+          <path d="M60 220h36M304 220h36M76 150l28 18M296 168l-28 18M76 300l28-18M296 282l-28-18"/>
+        </g>
+
+        <ellipse cx="200" cy="332" rx="140" ry="16" fill="#1F1B16" opacity="0.16"/>
+
+        <!-- plate -->
+        <ellipse cx="200" cy="288" rx="140" ry="34" fill="#FFFDF5" stroke="#1F1B16" stroke-width="5"/>
+        <ellipse cx="200" cy="284" rx="140" ry="30" fill="#FFFDF5" stroke="#1F1B16" stroke-width="4"/>
+        <ellipse cx="200" cy="282" rx="100" ry="20" fill="#F1E7D2" stroke="#1F1B16" stroke-width="3"/>
+
+        <!-- cheesecake wedge -->
+        <g>
+          <path d="M200 100L320 268a180 180 0 0 1-240 0Z" fill="#5C4B39" stroke="#1F1B16" stroke-width="6" stroke-linejoin="round"/>
+          <path d="M200 128L296 260a150 150 0 0 1-192 0Z" fill="#FBF2D6" stroke="#1F1B16" stroke-width="5" stroke-linejoin="round"/>
+          <!-- cel-shade crescent on filling -->
+          <path d="M296 260a150 150 0 0 1-56 42l-32-86Z" fill="#EFDFB0" opacity="0.8"/>
+          <!-- crust base sliver -->
+          <path d="M104 260a150 150 0 0 0 192 0l6 8a180 180 0 0 1-204 0Z" fill="#8F6A3B" stroke="#1F1B16" stroke-width="4"/>
+          <!-- gloss highlight -->
+          <ellipse cx="176" cy="160" rx="24" ry="10" fill="#FFFDF6" opacity="0.85" transform="rotate(-24 176 160)"/>
+        </g>
+
+        <!-- strawberry sauce drizzle -->
+        <g>
+          <path class="frosting-drip" d="M150 150c10 6 6 16 16 22c10 6 20 0 30 6c10 6 8 16 18 22" stroke="#C1121F" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path class="frosting-drip" d="M150 150c10 6 6 16 16 22c10 6 20 0 30 6c10 6 8 16 18 22" stroke="#1F1B16" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.45"/>
+        </g>
+
+        <!-- strawberry garnish -->
+        <g stroke="#1F1B16" stroke-width="4" stroke-linejoin="round">
+          <path d="M198 100c-14-2-22 10-18 22c4 12 16 18 24 12c8-6 8-20 4-28c-2-4-6-6-10-6Z" fill="#E5344A"/>
+        </g>
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.4">
+          <circle cx="192" cy="106" r="1.6"/><circle cx="200" cy="112" r="1.6"/><circle cx="196" cy="120" r="1.6"/>
+        </g>
+        <path d="M198 98c-2-6 2-10 8-12M198 98c2-5 6-8 10-8" stroke="#4A6B27" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <ellipse cx="192" cy="102" rx="4" ry="2" fill="#FF8FA0" opacity="0.8" transform="rotate(-20 192 102)"/>
+
+        <!-- crumb specks on crust -->
+        <g fill="#4A331A">
+          <circle cx="150" cy="240" r="2.2"/><circle cx="250" cy="240" r="2.2"/><circle cx="200" cy="252" r="2.2"/>
+        </g>
+
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+          <path d="M76 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+          <path d="M322 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider wrap" style="margin-top:50px;"></div>
+  <div class="section-head">
+    <span class="eyebrow">What you’ll need</span>
+    <h2>Ingredients</h2>
+  </div>
+  <div class="wrap ing-grid" id="cheesecakeIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="cheesecake-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="cheesecakeStepsList"></div>
+  </div>
+</section>
+
+<section id="sinigang">
+  <div class="wrap cake-hero">
+    <div class="cake-hero-text">
+      <span class="eyebrow">Recipe Six · Savory · Serves 5</span>
+      <h2>Sinigang na <em>Baboy</em></h2>
+      <p>A tangy tamarind pork soup loaded with radish, eggplant, string beans, and kangkong. Sour, savory, and the ultimate Filipino comfort bowl.</p>
+      <div class="badges">
+        <div class="badge"><b>55 min</b>total time</div>
+        <div class="badge"><b>5</b>servings</div>
+        <div class="badge"><b>Easy</b>difficulty</div>
+        <div class="badge"><b>1 pot</b>to wash</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.16">
+          <path d="M60 220h36M304 220h36M76 150l28 18M296 168l-28 18M76 300l28-18M296 282l-28-18"/>
+        </g>
+
+        <ellipse cx="200" cy="332" rx="140" ry="16" fill="#1F1B16" opacity="0.16"/>
+
+        <g>
+          <ellipse cx="200" cy="240" rx="132" ry="100" fill="#F1E7D2" stroke="#1F1B16" stroke-width="6"/>
+          <ellipse cx="200" cy="222" rx="132" ry="46" fill="#D9C08A" stroke="#1F1B16" stroke-width="5"/>
+
+          <ellipse cx="200" cy="216" rx="112" ry="36" fill="#E7B764" stroke="#1F1B16" stroke-width="5"/>
+          <!-- cel-shade crescent on broth -->
+          <path d="M280 190a36 36 0 0 1 20 26a112 112 0 0 0-20-26Z" fill="#CE9D4C" opacity="0.7"/>
+          <ellipse cx="168" cy="204" rx="30" ry="9" fill="#F3D48C" opacity="0.9"/>
+
+          <!-- pork chunks -->
+          <g stroke="#1F1B16" stroke-width="3.5" stroke-linejoin="round">
+            <path d="M148 212c-4-10 6-18 14-16c8 2 10 10 6 16c-4 6-16 8-20 0Z" fill="#E8B29A"/>
+            <path d="M230 206c-4-10 6-18 14-16c8 2 10 10 6 16c-4 6-16 8-20 0Z" fill="#E8B29A"/>
+          </g>
+
+          <!-- radish coins -->
+          <g fill="#FBF6E8" stroke="#1F1B16" stroke-width="2.4">
+            <circle cx="196" cy="196" r="9"/>
+            <circle cx="252" cy="222" r="8"/>
+          </g>
+
+          <!-- eggplant slices -->
+          <g fill="#7A5A9C" stroke="#1F1B16" stroke-width="2.4">
+            <ellipse cx="176" cy="230" rx="10" ry="6" transform="rotate(20 176 230)"/>
+          </g>
+
+          <!-- string beans -->
+          <g stroke="#4A6B27" stroke-width="4" stroke-linecap="round">
+            <path d="M210 236c8-4 16-2 22 4"/>
+            <path d="M148 240c8-4 16-2 22 4"/>
+          </g>
+
+          <!-- kangkong leaves -->
+          <g fill="#4A6B27" stroke="#1F1B16" stroke-width="2">
+            <path d="M220 190c4-6 12-6 14 0c-6 4-10 4-14 0Z"/>
+            <path d="M160 186c4-6 12-6 14 0c-6 4-10 4-14 0Z"/>
+          </g>
+
+          <!-- tomato wedge -->
+          <path d="M200 178c8 0 12 8 8 14c-4 6-14 6-16-2c-2-6 2-12 8-12Z" fill="#E5344A" stroke="#1F1B16" stroke-width="2.6"/>
+        </g>
+
+        <!-- long green chili garnish -->
+        <g stroke="#1F1B16" stroke-width="4" stroke-linecap="round">
+          <path d="M204 100c14 6 22 22 16 40c-4 12-16 18-22 12" fill="none"/>
+          <path d="M198 96c4-4 10-4 12 0" fill="none" stroke="#4A6B27" stroke-width="3"/>
+        </g>
+
+        <!-- anime-style steam swooshes -->
+        <g class="steam" stroke="#1F1B16" stroke-width="3.5" stroke-linecap="round" fill="#FFFFFF">
+          <path d="M152 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M204 146c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M256 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+        </g>
+
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+          <path d="M76 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+          <path d="M322 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider wrap" style="margin-top:50px;"></div>
+  <div class="section-head">
+    <span class="eyebrow">What you’ll need</span>
+    <h2>Ingredients</h2>
+  </div>
+  <div class="wrap ing-grid" id="sinigangIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="sinigang-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="sinigangStepsList"></div>
+  </div>
+</section>
+
+<section id="spicyshrimp">
+  <div class="wrap cake-hero">
+    <div class="cake-hero-text">
+      <span class="eyebrow">Recipe Seven · Savory · Serves 3</span>
+      <h2>Spicy <em>Buttered</em> Shrimp</h2>
+      <p>Whole shrimp seared shell-on in a fiery garlic-chili butter, finished with a squeeze of calamansi. Messy, hands-on, and gone in minutes.</p>
+      <div class="badges">
+        <div class="badge"><b>15 min</b>total time</div>
+        <div class="badge"><b>3</b>servings</div>
+        <div class="badge"><b>Easy</b>difficulty</div>
+        <div class="badge"><b>1 pan</b>to wash</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g stroke="#1F1B16" stroke-width="3" stroke-linecap="round" opacity="0.18">
+          <path d="M60 240h40M300 240h40M80 160l30 20M290 180l-30 20M80 320l30-20M290 300l-30-20"/>
+        </g>
+
+        <ellipse cx="200" cy="336" rx="150" ry="16" fill="#1F1B16" opacity="0.16"/>
+
+        <g class="skillet-shake">
+          <rect x="312" y="228" width="76" height="20" rx="9" fill="#5C4B39" stroke="#1F1B16" stroke-width="4"/>
+          <circle cx="200" cy="240" r="130" fill="#5A4433" stroke="#1F1B16" stroke-width="6"/>
+          <circle cx="200" cy="240" r="112" fill="#3A2E22" stroke="#1F1B16" stroke-width="4"/>
+          <circle cx="200" cy="240" r="98" fill="#F0C64E" stroke="#1F1B16" stroke-width="5"/>
+          <path d="M240 158a98 98 0 0 1 46 130a108 108 0 0 0-46-130Z" fill="#D9A93C" opacity="0.85"/>
+          <ellipse cx="168" cy="200" rx="34" ry="12" fill="#FFF6D8" opacity="0.9" transform="rotate(-12 168 200)"/>
+
+          <!-- big whole shrimp -->
+          <g stroke="#1F1B16" stroke-width="5" stroke-linejoin="round">
+            <path d="M130 250c-10-24 10-46 32-42c-4 12-10 18-6 28c12-4 24-14 36-8c12 6 8 24-4 32c-16 12-46 8-58-10Z" fill="#F2775A" transform="rotate(-6 160 240)"/>
+            <path d="M210 224c-10-24 10-46 32-42c-4 12-10 18-6 28c12-4 24-14 36-8c12 6 8 24-4 32c-16 12-46 8-58-10Z" fill="#F2775A" transform="rotate(18 240 214)"/>
+          </g>
+          <g fill="#FFC7AE" opacity="0.9">
+            <ellipse cx="126" cy="238" rx="5" ry="2.6" transform="rotate(-6 126 238)"/>
+            <ellipse cx="206" cy="212" rx="5" ry="2.6" transform="rotate(18 206 212)"/>
+          </g>
+          <!-- shrimp eyes -->
+          <g fill="#1F1B16">
+            <circle cx="118" cy="228" r="3"/>
+            <circle cx="198" cy="202" r="3"/>
+          </g>
+
+          <!-- chili flecks -->
+          <g fill="#C1121F" stroke="#1F1B16" stroke-width="1.4">
+            <path d="M170 268c6-4 14-2 16 4c-6 2-12 0-16-4Z"/>
+            <path d="M230 262c6-4 14-2 16 4c-6 2-12 0-16-4Z"/>
+            <path d="M150 290c6-4 14-2 16 4c-6 2-12 0-16-4Z"/>
+          </g>
+
+          <!-- garlic slivers -->
+          <g fill="#FFFBEF" stroke="#1F1B16" stroke-width="2.4">
+            <ellipse cx="196" cy="288" rx="7" ry="3.4" transform="rotate(-15 196 288)"/>
+            <ellipse cx="252" cy="266" rx="7" ry="3.4" transform="rotate(30 252 266)"/>
+          </g>
+
+          <!-- parsley/spring onion flecks -->
+          <g fill="#4A6B27" stroke="#1F1B16" stroke-width="1.4">
+            <circle cx="150" cy="264" r="3"/>
+            <circle cx="240" cy="280" r="3.2"/>
+            <circle cx="182" cy="200" r="3"/>
+          </g>
+        </g>
+
+        <!-- calamansi wedge -->
+        <g>
+          <path d="M280 300a22 22 0 0 1 22 -22l0 44a22 22 0 0 1 -22-22Z" fill="#B8D65C" stroke="#1F1B16" stroke-width="4"/>
+          <path d="M282 300h18M291 284v32" stroke="#F5F0C8" stroke-width="1.6" opacity="0.8"/>
+        </g>
+
+        <!-- anime-style steam swooshes -->
+        <g class="steam" stroke="#1F1B16" stroke-width="3.5" stroke-linecap="round" fill="#FFFFFF">
+          <path d="M152 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M204 146c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+          <path d="M256 150c-10-16 10-22 0-40c14 4 18 20 6 28c8 2 12 10 6 18" opacity="0.9"/>
+        </g>
+
+        <g fill="#FFE9A8" stroke="#1F1B16" stroke-width="1.6">
+          <path d="M84 116l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z"/>
+          <path d="M330 130l3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="divider wrap" style="margin-top:50px;"></div>
+  <div class="section-head">
+    <span class="eyebrow">What you’ll need</span>
+    <h2>Ingredients</h2>
+  </div>
+  <div class="wrap ing-grid" id="spicyshrimpIngGrid">
+    <!-- ingredients populated by JS -->
+  </div>
+</section>
+
+<section id="spicyshrimp-steps">
+  <div class="section-head wrap">
+    <span class="eyebrow">Follow along</span>
+    <h2>The Method</h2>
+  </div>
+  <div class="wrap">
+    <div class="steps-list" id="spicyshrimpStepsList"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="justify-content:center;">
+    <svg class="pot" viewBox="0 0 24 24" fill="none" width="22" height="22"><path d="M4 10h16v3a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7v-3Z" stroke="#48592A" stroke-width="1.6"/><path d="M2 10h20" stroke="#48592A" stroke-width="1.6" stroke-linecap="round"/><path d="M7 10V7a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3" stroke="#48592A" stroke-width="1.6"/></svg>
+    Chef Kris
+  </div>
+  Cooked up with butter, garlic, and a little patience.<br>Recipes by Chef Kris, The Gullible Cook.
+
+  <div class="donation-box">
+    <span class="eyebrow" style="color:var(--basil); display:block; margin-top:28px; margin-bottom:10px;">Get in touch</span>
+    <h3 style="font-size:1.3rem; margin:0 0 14px; color:var(--basil-deep);">Contact Chef Kris</h3>
+    <div class="contact-details">
+      <div class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px; color:var(--basil); margin-bottom:8px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="mono" style="font-size:0.7rem; color:var(--basil); text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">WhatsApp</span>
+        <div style="font-weight:600; font-size:1.05rem; color:var(--basil-deep);">Kristof James</div>
+      </div>
+      <div class="contact-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px; color:var(--basil); margin-bottom:8px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="mono" style="font-size:0.7rem; color:var(--basil); text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">Email</span>
+        <a href="mailto:silverhoshipon12@gmail.com" style="font-weight:600; font-size:0.9rem; color:var(--basil-deep); text-decoration:none; word-break:break-all;">silverhoshipon12@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="donation-box" style="margin-top:36px; padding-top:36px;">
+    <span class="eyebrow" style="color:var(--tomato); display:block; margin-bottom:10px;">Support the website</span>
+    <h3 style="font-size:1.3rem; margin:0 0 14px; color:var(--basil-deep);">Help Chef Kris Grow</h3>
+    <p style="max-width:460px; margin:0 auto 18px; color:rgba(43,33,24,0.78); font-size:0.95rem;">Your donations will help my website grow and bring more delicious recipes to your table.</p>
+    <div class="donation-details">
+      <div class="donation-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px; color:var(--tomato); margin-bottom:8px;"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        <span class="mono" style="font-size:0.7rem; color:var(--tomato); text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:6px;">Maya Payment</span>
+        <div style="font-weight:600; font-size:1.05rem; margin-bottom:4px;">Kristofer James Pancho</div>
+        <div class="mono" style="font-size:1.1rem; font-weight:600; color:var(--basil-deep);">+639930701734</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="scrim"></div>
+<div id="progress"><i></i></div>
+<div id="ambient"></div>
+<div id="glow"></div>
+
+<div class="cook" id="cook" role="dialog" aria-modal="true" aria-label="Cook mode" aria-hidden="true">
+  <div class="cook-top">
+    <span class="cook-title" id="cookTitle"></span>
+    <button class="cook-x" id="cookX" type="button" aria-label="Close cook mode">✕</button>
+  </div>
+  <div class="cook-dots" id="cookDots"></div>
+  <div class="cook-stage" id="cookStage">
+    <div class="cook-ic" id="cookIc"></div>
+    <span class="cook-num" id="cookNum"></span>
+    <h2 class="cook-h" id="cookH"></h2>
+    <p class="cook-p" id="cookP"></p>
+    <div class="cook-timer">
+      <span class="cook-time mono" id="cookTime">00:00</span>
+      <button class="cook-btn" id="cookGo" type="button">Start timer</button>
+    </div>
+  </div>
+  <div class="cook-nav">
+    <button class="cook-btn ghost" id="cookPrev" type="button">Back</button>
+    <button class="cook-btn" id="cookNext" type="button">Next step</button>
+  </div>
+</div>
+
+<script>
+  // ---- nav scroll shrink ----
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ---- burger toggle ----
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    burger.classList.toggle('open', isOpen);
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded', false);
+  }));
+
+  // ---- helpers ----
+  const icon = (path) => `<svg viewBox="0 0 48 48" fill="none" stroke="#48592A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+
+  function renderIngredients(gridId, ingredients) {
+    const grid = document.getElementById(gridId);
+    ingredients.forEach(([name, amt]) => {
+      const div = document.createElement('div');
+      div.className = 'ing';
+      div.innerHTML = `
+        <span class="check">
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="ing-name">${name}</span>
+        <span class="ing-amt mono">${amt}</span>
+      `;
+      div.addEventListener('click', () => div.classList.toggle('checked'));
+      grid.appendChild(div);
+    });
+  }
+
+  function renderSteps(listId, steps) {
+    const list = document.getElementById(listId);
+    steps.forEach((s, i) => {
+      const div = document.createElement('div');
+      div.className = 'step';
+      div.innerHTML = `
+        <div class="step-num">${i + 1}</div>
+        <div class="step-body">
+          <div>
+            <h3>${s.title}</h3>
+            <p>${s.text}</p>
+            <span class="step-time">${s.time}</span>
+          </div>
+          <div class="step-icon">${s.icon}</div>
+        </div>
+      `;
+      list.appendChild(div);
+    });
+  }
+
+  // ---- recipe 1: garlic butter shrimp pasta ----
+  const pastaIngredients = [
+    ["Spaghetti or linguine", "300 g"],
+    ["Large shrimp, peeled", "450 g"],
+    ["Unsalted butter", "60 g"],
+    ["Garlic, thinly sliced", "6 cloves"],
+    ["Red pepper flakes", "1/2 tsp"],
+    ["Lemon, zested + juiced", "1"],
+    ["Fresh parsley, chopped", "3 tbsp"],
+    ["Reserved pasta water", "1 cup"],
+    ["Parmesan, grated", "40 g"],
+    ["Salt & black pepper", "to taste"],
+  ];
+
+  const pastaSteps = [
+    {
+      title: "Salt the water, boil the pasta",
+      text: "Bring a large pot of well-salted water to a boil. Cook the pasta 1 minute short of the package time — it’ll finish in the skillet.",
+      time: "9 min",
+      icon: icon('<path d="M10 20h28v10a10 10 0 0 1-10 10h-8a10 10 0 0 1-10-10V20Z"/><path d="M16 20v-4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M18 10c-2-3 2-4 0-7M24 10c-2-3 2-4 0-7M30 10c-2-3 2-4 0-7"/>')
+    },
+    {
+      title: "Slice the garlic thin",
+      text: "While the water heats, slice garlic into thin coins rather than mincing — it turns golden and nutty instead of burning to bitter.",
+      time: "3 min",
+      icon: icon('<circle cx="24" cy="24" r="14"/><path d="M18 18c2-2 10-2 12 0M17 24h14M18 30c2 2 10 2 12 0"/>')
+    },
+    {
+      title: "Melt butter, bloom the garlic",
+      text: "In a wide skillet, melt the butter over medium heat. Add garlic and red pepper flakes, stirring often until fragrant and just golden.",
+      time: "2 min",
+      icon: icon('<path d="M12 26h24v6a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8v-6Z"/><path d="M36 28h4a4 4 0 0 1 0 8h-4"/><path d="M18 26c0-6 4-8 2-14M26 26c0-6 4-8 2-14"/>')
+    },
+    {
+      title: "Sear the shrimp",
+      text: "Push garlic to the side, raise heat to medium-high, and sear shrimp 90 seconds per side until pink and just curled.",
+      time: "3 min",
+      icon: icon('<path d="M14 30c0-10 8-18 18-18 0 6-2 10-6 12 4 0 8-2 8-8 6 4 4 14-6 16-8 2-14-1-14-2Z"/><circle cx="30" cy="16" r="1.4" fill="#48592A"/>')
+    },
+    {
+      title: "Marry pasta and sauce",
+      text: "Add the drained pasta straight into the skillet with a splash of starchy pasta water. Toss until the sauce clings and turns glossy.",
+      time: "2 min",
+      icon: icon('<path d="M24 10v28M24 10c-6 4-6 10 0 14M24 10c6 4 6 10 0 14"/><path d="M14 38h20"/>')
+    },
+    {
+      title: "Finish and plate",
+      text: "Off heat, stir in lemon zest, lemon juice, parsley, and parmesan. Taste, adjust salt, and serve immediately while glossy and hot.",
+      time: "1 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="16" ry="6"/><path d="M14 30c0-8 20-8 20 0"/><circle cx="20" cy="15" r="3"/><circle cx="27" cy="12" r="2.2"/>')
+    },
+  ];
+
+  // ---- recipe 2: classic carrot cake ----
+  const cakeIngredients = [
+    ["All-purpose flour", "280 g"],
+    ["Carrots, finely grated", "3 cups"],
+    ["Granulated sugar", "300 g"],
+    ["Vegetable oil", "240 ml"],
+    ["Large eggs", "4"],
+    ["Baking powder & soda", "1 tsp each"],
+    ["Cinnamon & nutmeg", "2 tsp / 1/4 tsp"],
+    ["Walnuts, toasted & chopped", "100 g"],
+    ["Cream cheese, softened", "225 g"],
+    ["Powdered sugar", "200 g"],
+  ];
+
+  const cakeSteps = [
+    {
+      title: "Prep pans and grate carrots",
+      text: "Heat the oven to 175°C and butter two 20 cm cake pans. Finely grate the carrots — fine shreds bake in evenly, no chunks.",
+      time: "10 min",
+      icon: icon('<rect x="8" y="10" width="32" height="10" rx="3"/><path d="M12 20c0 10 2 18 12 18s12-8 12-18"/><path d="M18 6l2 6M24 4l0 7M30 6l-2 6"/>')
+    },
+    {
+      title: "Whisk the wet ingredients",
+      text: "In a large bowl, whisk oil, sugar, and eggs until smooth and slightly pale. This is your base — everything else folds in from here.",
+      time: "4 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="18" ry="10"/><path d="M10 26c4 4 10 6 14 6s10-2 14-6"/><path d="M24 10v10M18 12l3 8M30 12l-3 8"/>')
+    },
+    {
+      title: "Fold in dry ingredients",
+      text: "Sift in flour, baking powder, baking soda, cinnamon, and nutmeg. Fold gently just until no dry streaks remain — don’t overmix.",
+      time: "5 min",
+      icon: icon('<circle cx="24" cy="24" r="16"/><path d="M16 20c4-2 12-2 16 0M16 24c4-2 12-2 16 0M16 28c4-2 12-2 16 0"/>')
+    },
+    {
+      title: "Stir in carrot and walnuts",
+      text: "Fold the grated carrot and toasted walnuts through the batter, then divide evenly between the two prepared pans.",
+      time: "3 min",
+      icon: icon('<path d="M24 8c8 4 8 14 4 22-4 6-12 6-16 0-4-8-4-18 4-22Z"/><path d="M20 12c2 4 2 12 4 18M28 12c-2 4-2 12-4 18"/>')
+    },
+    {
+      title: "Bake until set",
+      text: "Bake 30–35 minutes, until a skewer comes out clean and the tops spring back. Cool in the pans 10 minutes, then turn out fully.",
+      time: "35 min",
+      icon: icon('<rect x="8" y="12" width="32" height="26" rx="4"/><path d="M8 20h32"/><circle cx="24" cy="29" r="5"/>')
+    },
+    {
+      title: "Frost and layer",
+      text: "Beat cream cheese with powdered sugar until smooth. Spread over one cooled layer, stack the second on top, then frost the whole cake.",
+      time: "12 min",
+      icon: icon('<rect x="10" y="22" width="28" height="14" rx="3"/><path d="M10 22c2-6 26-6 28 0"/><path d="M16 16c2-3 2-5 0-8M24 16c2-3 2-5 0-8M32 16c2-3 2-5 0-8"/>')
+    },
+  ];
+
+  // ---- recipe 3: creamy salmon pasta ----
+  const salmonIngredients = [
+    ["Fettuccine or penne", "300 g"],
+    ["Salmon fillet, skinless", "400 g"],
+    ["Butter", "20 g"],
+    ["Garlic, minced", "3 cloves"],
+    ["Heavy cream", "200 ml"],
+    ["Parmesan, grated", "50 g"],
+    ["Lemon, sliced + zested", "1"],
+    ["Fresh dill, chopped", "2 tbsp"],
+    ["Reserved pasta water", "1/2 cup"],
+    ["Salt & black pepper", "to taste"],
+  ];
+
+  const salmonSteps = [
+    {
+      title: "Boil the pasta",
+      text: "Bring a large pot of salted water to a boil and cook the pasta 1 minute short of the package time, reserving a cup of the water before draining.",
+      time: "9 min",
+      icon: icon('<path d="M10 20h28v10a10 10 0 0 1-10 10h-8a10 10 0 0 1-10-10V20Z"/><path d="M16 20v-4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M18 10c-2-3 2-4 0-7M24 10c-2-3 2-4 0-7M30 10c-2-3 2-4 0-7"/>')
+    },
+    {
+      title: "Season and sear the salmon",
+      text: "Pat the salmon dry, season with salt and pepper, and sear skin-side down in a hot skillet 3–4 minutes per side until just cooked through.",
+      time: "8 min",
+      icon: icon('<path d="M14 30c0-10 8-18 18-18 0 6-2 10-6 12 4 0 8-2 8-8 6 4 4 14-6 16-8 2-14-1-14-2Z"/><circle cx="30" cy="16" r="1.4" fill="#48592A"/>')
+    },
+    {
+      title: "Flake the salmon, set aside",
+      text: "Transfer the salmon to a plate and gently flake it into large chunks with a fork once it’s cool enough to handle.",
+      time: "2 min",
+      icon: icon('<circle cx="24" cy="24" r="14"/><path d="M18 18c2-2 10-2 12 0M17 24h14M18 30c2 2 10 2 12 0"/>')
+    },
+    {
+      title: "Build the cream sauce",
+      text: "In the same skillet, melt butter and sauté garlic until fragrant. Pour in the cream and simmer, then whisk in parmesan until glossy.",
+      time: "4 min",
+      icon: icon('<path d="M12 26h24v6a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8v-6Z"/><path d="M36 28h4a4 4 0 0 1 0 8h-4"/><path d="M18 26c0-6 4-8 2-14M26 26c0-6 4-8 2-14"/>')
+    },
+    {
+      title: "Toss pasta into the sauce",
+      text: "Add the drained pasta and a splash of pasta water to the skillet. Toss until every strand is coated and the sauce clings.",
+      time: "2 min",
+      icon: icon('<path d="M24 10v28M24 10c-6 4-6 10 0 14M24 10c6 4 6 10 0 14"/><path d="M14 38h20"/>')
+    },
+    {
+      title: "Fold in salmon and finish",
+      text: "Gently fold the flaked salmon back through the pasta. Finish with lemon zest, a squeeze of juice, and fresh dill, then serve at once.",
+      time: "1 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="16" ry="6"/><path d="M14 30c0-8 20-8 20 0"/><circle cx="20" cy="15" r="3"/><circle cx="27" cy="12" r="2.2"/>')
+    },
+  ];
+
+  // ---- recipe 4: ube champorado ----
+  const champoradoIngredients = [
+    ["Glutinous (malagkit) rice", "1 cup"],
+    ["Water", "4 cups"],
+    ["Unsweetened cocoa powder", "4 tbsp"],
+    ["Ube halaya or ube extract", "3 tbsp"],
+    ["Sugar", "1/2 cup"],
+    ["Pinch of salt", "1/4 tsp"],
+    ["Condensed milk", "for drizzling"],
+    ["Toasted coconut flakes", "2 tbsp"],
+    ["Evaporated milk", "optional, to serve"],
+  ];
+
+  const champoradoSteps = [
+    {
+      title: "Rinse and simmer the rice",
+      text: "Rinse the glutinous rice until the water runs clear. Combine with water in a heavy pot and bring to a gentle boil, stirring occasionally.",
+      time: "10 min",
+      icon: icon('<path d="M10 20h28v10a10 10 0 0 1-10 10h-8a10 10 0 0 1-10-10V20Z"/><path d="M16 20v-4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M18 10c-2-3 2-4 0-7M24 10c-2-3 2-4 0-7M30 10c-2-3 2-4 0-7"/>')
+    },
+    {
+      title: "Stir in cocoa",
+      text: "Once the rice starts to soften, whisk in the cocoa powder until fully dissolved and the porridge turns a deep chocolate brown.",
+      time: "5 min",
+      icon: icon('<circle cx="24" cy="24" r="14"/><path d="M18 18c2-2 10-2 12 0M17 24h14M18 30c2 2 10 2 12 0"/>')
+    },
+    {
+      title: "Fold in the ube",
+      text: "Add the ube halaya or extract and stir well, letting the color bloom into a deep purple-brown as it melts into the porridge.",
+      time: "3 min",
+      icon: icon('<path d="M24 8c8 4 8 14 4 22-4 6-12 6-16 0-4-8-4-18 4-22Z"/><path d="M20 12c2 4 2 12 4 18M28 12c-2 4-2 12-4 18"/>')
+    },
+    {
+      title: "Sweeten and simmer",
+      text: "Stir in the sugar and a pinch of salt. Simmer uncovered, stirring often, until the rice is fully tender and the porridge has thickened.",
+      time: "12 min",
+      icon: icon('<path d="M12 26h24v6a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8v-6Z"/><path d="M36 28h4a4 4 0 0 1 0 8h-4"/><path d="M18 26c0-6 4-8 2-14M26 26c0-6 4-8 2-14"/>')
+    },
+    {
+      title: "Rest off the heat",
+      text: "Remove from heat and let it sit 2–3 minutes — it continues to thicken as it cools slightly, so don’t overcook on the stove.",
+      time: "3 min",
+      icon: icon('<rect x="8" y="12" width="32" height="26" rx="4"/><path d="M8 20h32"/><circle cx="24" cy="29" r="5"/>')
+    },
+    {
+      title: "Ladle and top",
+      text: "Spoon into bowls and finish each with a swirl of condensed milk, a scatter of toasted coconut, and a splash of evaporated milk if you like it looser.",
+      time: "2 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="16" ry="6"/><path d="M14 30c0-8 20-8 20 0"/><circle cx="20" cy="15" r="3"/><circle cx="27" cy="12" r="2.2"/>')
+    },
+  ];
+
+  // ---- recipe 5: chef kris's special cheesecake ----
+  const cheesecakeIngredients = [
+    ["Graham crackers, crushed", "200 g"],
+    ["Butter, melted", "80 g"],
+    ["Cream cheese, softened", "680 g"],
+    ["Granulated sugar", "180 g"],
+    ["Large eggs", "3"],
+    ["Sour cream", "150 g"],
+    ["Vanilla extract", "1 tsp"],
+    ["Strawberries, hulled", "300 g"],
+    ["Sugar (for sauce)", "3 tbsp"],
+    ["Lemon juice", "1 tbsp"],
+  ];
+
+  const cheesecakeSteps = [
+    {
+      title: "Press the crust",
+      text: "Mix crushed graham crackers with melted butter until it looks like wet sand. Press firmly into a springform pan and up the sides.",
+      time: "8 min",
+      icon: icon('<rect x="10" y="30" width="28" height="8" rx="2"/><path d="M14 30c-2-8 0-14 10-14s12 6 10 14"/><path d="M18 22l2 4M24 20l0 5M30 22l-2 4"/>')
+    },
+    {
+      title: "Bake the crust",
+      text: "Bake the crust at 165°C for 8–10 minutes until just set and lightly golden, then let it cool while you make the filling.",
+      time: "10 min",
+      icon: icon('<rect x="8" y="12" width="32" height="26" rx="4"/><path d="M8 20h32"/><circle cx="24" cy="29" r="5"/>')
+    },
+    {
+      title: "Beat the filling smooth",
+      text: "Beat cream cheese and sugar until silky with no lumps. Add eggs one at a time on low speed, then mix in sour cream and vanilla.",
+      time: "6 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="18" ry="10"/><path d="M10 26c4 4 10 6 14 6s10-2 14-6"/><path d="M24 10v10M18 12l3 8M30 12l-3 8"/>')
+    },
+    {
+      title: "Bake low and slow",
+      text: "Pour the filling over the crust and bake at 150°C for 55–65 minutes until the edges are set but the center still jiggles slightly.",
+      time: "60 min",
+      icon: icon('<rect x="8" y="12" width="32" height="26" rx="4"/><path d="M8 20h32"/><circle cx="24" cy="29" r="5"/>')
+    },
+    {
+      title: "Cool, then chill",
+      text: "Turn off the oven and let the cheesecake cool inside with the door ajar to prevent cracking, then refrigerate at least 4 hours.",
+      time: "4 hr",
+      icon: icon('<circle cx="24" cy="24" r="16"/><path d="M24 14v10l8 6"/>')
+    },
+    {
+      title: "Make the sauce and top",
+      text: "Simmer strawberries with sugar and lemon juice until glossy and slightly thickened. Cool, then spoon over the chilled cheesecake to serve.",
+      time: "6 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="16" ry="6"/><path d="M14 30c0-8 20-8 20 0"/><circle cx="20" cy="15" r="3"/><circle cx="27" cy="12" r="2.2"/>')
+    },
+  ];
+
+  // ---- recipe 6: sinigang na baboy ----
+  const sinigangIngredients = [
+    ["Pork belly or ribs, cubed", "800 g"],
+    ["Water", "8 cups"],
+    ["Tamarind soup base or fresh tamarind", "1 pack / 200 g"],
+    ["Tomatoes, quartered", "2"],
+    ["Onion, quartered", "1"],
+    ["Radish (labanos), sliced", "1"],
+    ["Eggplant, sliced", "1"],
+    ["String beans (sitaw), cut", "1 cup"],
+    ["Kangkong (water spinach)", "2 cups"],
+    ["Long green chili", "2"],
+    ["Fish sauce", "to taste"],
+  ];
+
+  const sinigangSteps = [
+    {
+      title: "Boil the pork",
+      text: "Place the pork in a large pot with water, tomatoes, and onion. Bring to a boil, skim off the scum, then simmer until the pork is tender.",
+      time: "25 min",
+      icon: icon('<path d="M10 20h28v10a10 10 0 0 1-10 10h-8a10 10 0 0 1-10-10V20Z"/><path d="M16 20v-4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M18 10c-2-3 2-4 0-7M24 10c-2-3 2-4 0-7M30 10c-2-3 2-4 0-7"/>')
+    },
+    {
+      title: "Mash the aromatics",
+      text: "Mash the softened tomatoes and onion right in the pot to build a flavorful base for the broth.",
+      time: "2 min",
+      icon: icon('<circle cx="24" cy="24" r="14"/><path d="M18 18c2-2 10-2 12 0M17 24h14M18 30c2 2 10 2 12 0"/>')
+    },
+    {
+      title: "Sour the broth",
+      text: "Stir in the tamarind soup base (or strained fresh tamarind pulp) until the broth turns pleasantly sour. Taste and adjust.",
+      time: "3 min",
+      icon: icon('<path d="M24 8c8 4 8 14 4 22-4 6-12 6-16 0-4-8-4-18 4-22Z"/><path d="M20 12c2 4 2 12 4 18M28 12c-2 4-2 12-4 18"/>')
+    },
+    {
+      title: "Add the sturdy vegetables",
+      text: "Add the radish and eggplant first since they take longest to cook, followed a few minutes later by the string beans and chili.",
+      time: "8 min",
+      icon: icon('<rect x="8" y="20" width="32" height="14" rx="4"/><path d="M12 20c2-6 24-6 26 0"/><circle cx="16" cy="27" r="2"/><circle cx="24" cy="27" r="2"/><circle cx="32" cy="27" r="2"/>')
+    },
+    {
+      title: "Finish with kangkong",
+      text: "Once the vegetables are just tender, drop in the kangkong leaves and simmer briefly — they only need a minute to wilt.",
+      time: "2 min",
+      icon: icon('<path d="M24 8c8 4 8 14 4 22-4 6-12 6-16 0-4-8-4-18 4-22Z"/><path d="M20 12c2 4 2 12 4 18M28 12c-2 4-2 12-4 18"/>')
+    },
+    {
+      title: "Season and serve",
+      text: "Season with fish sauce to taste, then ladle hot into bowls. Serve with steamed rice and extra fish sauce with chili on the side.",
+      time: "1 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="16" ry="6"/><path d="M14 30c0-8 20-8 20 0"/><circle cx="20" cy="15" r="3"/><circle cx="27" cy="12" r="2.2"/>')
+    },
+  ];
+
+  // ---- render everything ----
+  renderIngredients('pastaIngGrid', pastaIngredients);
+  renderSteps('pastaStepsList', pastaSteps);
+  renderIngredients('cakeIngGrid', cakeIngredients);
+  renderSteps('cakeStepsList', cakeSteps);
+  renderIngredients('salmonIngGrid', salmonIngredients);
+  renderSteps('salmonStepsList', salmonSteps);
+  renderIngredients('champoradoIngGrid', champoradoIngredients);
+  renderSteps('champoradoStepsList', champoradoSteps);
+  renderIngredients('cheesecakeIngGrid', cheesecakeIngredients);
+  renderSteps('cheesecakeStepsList', cheesecakeSteps);
+  renderIngredients('sinigangIngGrid', sinigangIngredients);
+  renderSteps('sinigangStepsList', sinigangSteps);
+
+  // ---- recipe 7: spicy buttered shrimp ----
+  const spicyshrimpIngredients = [
+    ["Large shrimp, shell-on, head-on", "500 g"],
+    ["Unsalted butter", "80 g"],
+    ["Garlic, minced", "8 cloves"],
+    ["Red chili flakes", "1 tsp"],
+    ["Fresh red chilies, chopped", "3"],
+    ["Calamansi or lemon", "4"],
+    ["Spring onion, sliced", "2 tbsp"],
+    ["Sugar", "1/2 tsp"],
+    ["Salt & black pepper", "to taste"],
+  ];
+
+  const spicyshrimpSteps = [
+    {
+      title: "Prep the shrimp",
+      text: "Trim the shrimp antennae and legs, and devein through the shell with a skewer if you like — keeping the shell on locks in flavor.",
+      time: "5 min",
+      icon: icon('<path d="M14 30c0-10 8-18 18-18 0 6-2 10-6 12 4 0 8-2 8-8 6 4 4 14-6 16-8 2-14-1-14-2Z"/><circle cx="30" cy="16" r="1.4" fill="#48592A"/>')
+    },
+    {
+      title: "Build the chili butter",
+      text: "Melt the butter in a wide skillet over medium heat. Add garlic, chili flakes, and fresh chilies, stirring until fragrant and just golden.",
+      time: "2 min",
+      icon: icon('<path d="M12 26h24v6a8 8 0 0 1-8 8h-8a8 8 0 0 1-8-8v-6Z"/><path d="M36 28h4a4 4 0 0 1 0 8h-4"/><path d="M18 26c0-6 4-8 2-14M26 26c0-6 4-8 2-14"/>')
+    },
+    {
+      title: "Sear the shrimp hot and fast",
+      text: "Raise the heat to medium-high and add the shrimp in a single layer. Sear undisturbed 2 minutes, then flip and sear the other side.",
+      time: "4 min",
+      icon: icon('<circle cx="24" cy="24" r="16"/><path d="M18 18c2-2 10-2 12 0M17 24h14M18 30c2 2 10 2 12 0"/>')
+    },
+    {
+      title: "Season and toss",
+      text: "Sprinkle in sugar, salt, and pepper, then toss the shrimp through the butter until every piece is glossy and evenly coated.",
+      time: "1 min",
+      icon: icon('<rect x="10" y="20" width="28" height="14" rx="4"/><path d="M14 20c2-6 24-6 26 0"/><circle cx="16" cy="27" r="2"/><circle cx="24" cy="27" r="2"/><circle cx="32" cy="27" r="2"/>')
+    },
+    {
+      title: "Finish with calamansi",
+      text: "Off the heat, squeeze calamansi or lemon juice over the shrimp and give it one final toss to bring the sauce together.",
+      time: "1 min",
+      icon: icon('<path d="M24 8c8 4 8 14 4 22-4 6-12 6-16 0-4-8-4-18 4-22Z"/><path d="M20 12c2 4 2 12 4 18M28 12c-2 4-2 12-4 18"/>')
+    },
+    {
+      title: "Plate and dig in",
+      text: "Pile onto a plate, scatter with spring onion, and serve immediately with extra calamansi wedges and rice on the side.",
+      time: "2 min",
+      icon: icon('<ellipse cx="24" cy="30" rx="16" ry="6"/><path d="M14 30c0-8 20-8 20 0"/><circle cx="20" cy="15" r="3"/><circle cx="27" cy="12" r="2.2"/>')
+    },
+  ];
+
+  renderIngredients('spicyshrimpIngGrid', spicyshrimpIngredients);
+  renderSteps('spicyshrimpStepsList', spicyshrimpSteps);
+
+  // ---- scroll reveal ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll('.step').forEach(el => observer.observe(el));
+
+  // ================= IMMERSIVE LAYER =================
+  (function(){
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+    const root = document.documentElement;
+
+    // --- mood tint that shifts per recipe ---
+    const moods = {pasta:'#E9B949', cake:'#D98A3A', salmon:'#E9764F', champorado:'#8B5FA8', cheesecake:'#E5344A', sinigang:'#E7B764', spicyshrimp:'#C1121F'};
+    const moodIO = new IntersectionObserver(es => {
+      es.forEach(e => { if (e.isIntersecting) root.style.setProperty('--tint', e.target.dataset.mood); });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(moods).forEach(k => [k, k + '-steps'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.dataset.mood = moods[k]; moodIO.observe(el); }
+    }));
+    ['top','menu'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.dataset.mood = '#E9B949'; moodIO.observe(el); }
+    });
+
+    // --- ambient floating glow particles ---
+    if (!reduce) {
+      const amb = document.getElementById('ambient');
+      const n = innerWidth < 720 ? 12 : 22;
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement('span');
+        s.style.cssText = `left:${Math.random()*100}%;--s:${6 + Math.random()*16}px;--t:${14 + Math.random()*16}s;--dl:${-Math.random()*20}s;--dx:${Math.random()*120 - 60}px`;
+        amb.appendChild(s);
+      }
+    }
+
+    // --- reveal on scroll ---
+    const rev = [...document.querySelectorAll('.cake-hero-text, .cake-hero .hero-art, .section-head, .menu-card, .ing, .chef-card')];
+    rev.forEach((el, i) => { el.classList.add('reveal'); el.style.setProperty('--d', ((i % 4) * 0.07) + 's'); });
+    const revIO = new IntersectionObserver((es, o) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } });
+    }, {threshold:0.12, rootMargin:'0px 0px -6% 0px'});
+    rev.forEach(el => revIO.observe(el));
+
+    // --- scroll loop: progress bar, parallax, active step + glowing trail ---
+    const bar = document.querySelector('#progress i');
+    const arts = [...document.querySelectorAll('.hero-art')];
+    const lists = [...document.querySelectorAll('.steps-list')].map(l => ({l, steps:[...l.querySelectorAll('.step')]}));
+    let ticking = false;
+    function frame() {
+      ticking = false;
+      const vh = innerHeight;
+      const max = document.documentElement.scrollHeight - vh;
+      bar.style.setProperty('--p', max > 0 ? (scrollY / max).toFixed(4) : 0);
+      if (!reduce) {
+        arts.forEach(a => {
+          const r = a.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > vh + 100) return;
+          a.style.setProperty('--py', ((r.top + r.height/2 - vh/2) * -0.09).toFixed(1) + 'px');
+        });
+      }
+      lists.forEach(({l, steps}) => {
+        const r = l.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) return;
+        const mid = vh * 0.55;
+        l.style.setProperty('--fill', Math.max(0, Math.min(r.height - 16, mid - r.top - 8)) + 'px');
+        let best = null, bd = 1e9;
+        steps.forEach(s => {
+          const sr = s.getBoundingClientRect();
+          const d = Math.abs(sr.top + sr.height/2 - mid);
+          if (d < bd) { bd = d; best = s; }
+        });
+        steps.forEach(s => s.classList.toggle('active', s === best && bd < vh * 0.45));
+      });
+    }
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, {passive:true});
+    addEventListener('resize', frame);
+    frame();
+
+    // --- pointer effects (desktop) ---
+    if (fine && !reduce) {
+      arts.forEach(a => {
+        a.addEventListener('pointermove', e => {
+          const r = a.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+          a.style.setProperty('--ry', (px * 16).toFixed(1) + 'deg');
+          a.style.setProperty('--rx', (-py * 14).toFixed(1) + 'deg');
+        });
+        a.addEventListener('pointerleave', () => { a.style.setProperty('--rx','0deg'); a.style.setProperty('--ry','0deg'); });
+      });
+      const tilt = (el, max, lift) => {
+        el.addEventListener('pointermove', e => {
+          const r = el.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+          el.style.transform = `perspective(800px) rotateX(${(-py*max).toFixed(2)}deg) rotateY(${(px*max).toFixed(2)}deg) translateY(${lift}px)`;
+        });
+        el.addEventListener('pointerleave', () => { el.style.transform = ''; });
+      };
+      document.querySelectorAll('.menu-card').forEach(c => tilt(c, 8, -4));
+      document.querySelectorAll('.step-body').forEach(c => tilt(c, 5, 0));
+
+      const glow = document.getElementById('glow');
+      let gx = innerWidth/2, gy = innerHeight/2, tx = gx, ty = gy;
+      addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; glow.style.opacity = .5; });
+      document.documentElement.addEventListener('mouseleave', () => { glow.style.opacity = 0; });
+      (function loop(){ gx += (tx - gx) * .12; gy += (ty - gy) * .12; glow.style.transform = `translate3d(${gx}px,${gy}px,0)`; requestAnimationFrame(loop); })();
+    }
+
+    // --- COOK MODE: full-screen step-by-step with timers ---
+    const recipes = {
+      pasta:['Garlic Butter Shrimp Pasta', pastaSteps],
+      cake:['Classic Carrot Cake', cakeSteps],
+      salmon:['Creamy Salmon Pasta', salmonSteps],
+      champorado:['Ube Champorado', champoradoSteps],
+      cheesecake:['Chef Kris’s Special Cheesecake', cheesecakeSteps],
+      sinigang:['Sinigang na Baboy', sinigangSteps],
+      spicyshrimp:['Spicy Buttered Shrimp', spicyshrimpSteps]
+    };
+    const $ = id => document.getElementById(id);
+    const cook = $('cook'), stage = $('cookStage'), timeEl = $('cookTime'), go = $('cookGo'), prev = $('cookPrev'), next = $('cookNext');
+    let cur = null, idx = 0, left = 0, total = 0, tid = null, endAt = 0, wake = null;
+
+    const secs = t => { const m = /(\d+)\s*(sec|min|hr)/.exec(t || ''); if (!m) return 0; const n = +m[1]; return m[2] === 'hr' ? n*3600 : m[2] === 'min' ? n*60 : n; };
+    const fmt = s => { const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60; return (h ? h + ':' : '') + String(m).padStart(2,'0') + ':' + String(x).padStart(2,'0'); };
+    function beep() {
+      try {
+        const ac = new (window.AudioContext || window.webkitAudioContext)();
+        [0, .25, .5].forEach(t => {
+          const o = ac.createOscillator(), g = ac.createGain();
+          o.frequency.value = 880; g.gain.value = .15; o.connect(g); g.connect(ac.destination);
+          o.start(ac.currentTime + t); o.stop(ac.currentTime + t + .15);
+        });
+      } catch (e) {}
+    }
+    function stopTimer() { clearInterval(tid); tid = null; }
+    function tick() {
+      left = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+      timeEl.textContent = fmt(left);
+      if (left <= 0) {
+        stopTimer(); timeEl.classList.add('done'); go.textContent = 'Restart'; beep();
+        if (navigator.vibrate) navigator.vibrate([300,150,300]);
+      }
+    }
+    go.addEventListener('click', () => {
+      if (tid) { stopTimer(); go.textContent = 'Resume'; return; }
+      if (left <= 0) { left = total; timeEl.classList.remove('done'); }
+      endAt = Date.now() + left * 1000; tid = setInterval(tick, 500); go.textContent = 'Pause';
+    });
+    function render(anim) {
+      const steps = cur[1], s = steps[idx];
+      $('cookTitle').textContent = cur[0];
+      $('cookIc').innerHTML = s.icon;
+      $('cookNum').textContent = 'Step ' + (idx + 1) + ' of ' + steps.length;
+      $('cookH').textContent = s.title;
+      $('cookP').textContent = s.text;
+      $('cookDots').innerHTML = steps.map((_, i) => `<i class="${i < idx ? 'done' : i === idx ? 'now' : ''}"></i>`).join('');
+      stopTimer(); total = left = secs(s.time);
+      timeEl.textContent = fmt(left); timeEl.classList.remove('done'); go.textContent = 'Start timer';
+      prev.disabled = idx === 0; prev.style.opacity = idx === 0 ? .4 : 1;
+      next.textContent = idx === steps.length - 1 ? 'Finish' : 'Next step';
+      if (anim) { stage.classList.remove('swap'); void stage.offsetWidth; stage.classList.add('swap'); }
+    }
+    async function lock() { try { wake = await navigator.wakeLock.request('screen'); } catch (e) {} }
+    function unlock() { try { if (wake) wake.release(); } catch (e) {} wake = null; }
+    function openCook(key) {
+      cur = recipes[key]; idx = 0; root.style.setProperty('--tint', moods[key]);
+      render(false); cook.classList.add('open'); cook.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; lock(); $('cookX').focus();
+    }
+    function closeCook() {
+      stopTimer(); cook.classList.remove('open'); cook.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; unlock();
+    }
+    const goNext = () => { if (idx >= cur[1].length - 1) closeCook(); else { idx++; render(true); } };
+    const goPrev = () => { if (idx > 0) { idx--; render(true); } };
+    next.addEventListener('click', goNext);
+    prev.addEventListener('click', goPrev);
+    $('cookX').addEventListener('click', closeCook);
+    addEventListener('keydown', e => {
+      if (!cook.classList.contains('open')) return;
+      if (e.key === 'Escape') closeCook();
+      else if (e.key === 'ArrowRight') goNext();
+      else if (e.key === 'ArrowLeft') goPrev();
+    });
+    let sx = 0;
+    stage.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    stage.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 60) (dx < 0 ? goNext : goPrev)();
+    });
+    Object.keys(recipes).forEach(key => {
+      const head = document.querySelector('#' + key + '-steps .section-head');
+      if (!head) return;
+      const b = document.createElement('button');
+      b.className = 'cook-btn'; b.type = 'button';
+      b.innerHTML = '<span aria-hidden="true">▶</span> Cook mode';
+      b.addEventListener('click', () => openCook(key));
+      head.appendChild(b);
+    });
+  })();
+
+  // ===== mobile nav: scrim, Esc, auto-close on resize =====
+  (function(){
+    const nl = document.getElementById('navLinks'), b = document.getElementById('burger'), sc = document.getElementById('scrim');
+    new MutationObserver(() => {
+      const open = nl.classList.contains('open');
+      document.body.classList.toggle('nav-open', open);
+      b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }).observe(nl, {attributes:true, attributeFilter:['class']});
+    sc.addEventListener('click', () => b.click());
+    addEventListener('keydown', e => { if (e.key === 'Escape' && nl.classList.contains('open')) b.click(); });
+    matchMedia('(min-width:721px)').addEventListener('change', e => { if (e.matches && nl.classList.contains('open')) b.click(); });
+  })();
+  // ===== animated dropdown nav =====
+  (function(){
+    const nl = document.getElementById('navLinks');
+    const wrap = document.getElementById('ddWrap'), tg = document.getElementById('ddToggle');
+    const desktop = matchMedia('(min-width:721px)');
+    const hoverable = matchMedia('(hover:hover) and (pointer:fine)');
+    const setOpen = o => { wrap.classList.toggle('open', o); tg.setAttribute('aria-expanded', o); };
+    [...nl.children].forEach((li, i) => li.style.setProperty('--i', i));
+    wrap.querySelectorAll('.dd-inner a').forEach((a, i) => a.style.setProperty('--i', i));
+
+    tg.addEventListener('click', e => {
+      e.stopPropagation();
+      if (desktop.matches && hoverable.matches) setOpen(true); else setOpen(!wrap.classList.contains('open'));
+    });
+    wrap.addEventListener('mouseenter', () => { if (desktop.matches && hoverable.matches) setOpen(true); });
+    wrap.addEventListener('mouseleave', () => { if (desktop.matches && hoverable.matches) setOpen(false); });
+    document.addEventListener('click', e => { if (desktop.matches && !wrap.contains(e.target)) setOpen(false); });
+    wrap.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && wrap.classList.contains('open')) { setOpen(false); if (desktop.matches) tg.focus(); } });
+    // collapse the accordion whenever the mobile menu closes
+    new MutationObserver(() => { if (!nl.classList.contains('open') && !desktop.matches) setOpen(false); })
+      .observe(nl, {attributes:true, attributeFilter:['class']});
+
+    // gliding highlight pill behind the hovered top-level link (desktop)
+    [...nl.children].forEach(li => {
+      if (li.querySelector('.nav-cta')) return;
+      li.addEventListener('mouseenter', () => {
+        if (!desktop.matches) return;
+        const first = nl.style.getPropertyValue('--po') !== '1';
+        if (first) nl.classList.add('no-tr');
+        nl.style.setProperty('--px', (li.offsetLeft - 12) + 'px');
+        nl.style.setProperty('--pw', (li.offsetWidth + 24) + 'px');
+        if (first) { void nl.offsetWidth; nl.classList.remove('no-tr'); }
+        nl.style.setProperty('--po', 1);
+      });
+    });
+    nl.addEventListener('mouseleave', () => nl.style.setProperty('--po', 0));
+  })();
+</script>
+
+</body>
+</html>
